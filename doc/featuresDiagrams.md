@@ -21,6 +21,7 @@ VPS(Validate comment)
 	SIGNIN --> TESTLOG
 	TESTLOG -- yes --> WAC
 	WAC --> VPS
+style PRO stroke:green
 ```
 
 ```mermaid
@@ -37,7 +38,7 @@ CAP(My space page)
 TESTART{it's an artist ?}
 ACD(Access denied)
 APC(Artist page created)
-style CAP stroke:green
+
 	CAP-- create page -->TESTLOG
 	TESTLOG -- no --> LOG
 	TESTLOG -- yes --> TESTART
@@ -47,6 +48,7 @@ style CAP stroke:green
 	SIGNIN --> TESTLOG
 	TESTART -- yes --> APC
 	TESTART -- no --> ACD
+style CAP stroke:green
 ```
 
 ```mermaid
@@ -67,7 +69,7 @@ TESTLOG -- no --> LOG
 LOG --> TESTAD
 TESTAD -- 	yes --> CAP
 TESTAD -- 	no --> ACD
-	
+style SI stroke:green
 ```
 ```mermaid
 ---
@@ -86,54 +88,12 @@ PAJ -- yes --> JAV
 PAJ -- no -->  SPP
 SPP -- yes --> JAV
 SPP -- no --> USA
+style CRE stroke:green
 ```
 
 ```mermaid
 ---
-title : As an new user I can see a suggested product
----
-flowchart TB
-
-FV(First visit)
-PS{Pub suggestion}
-PPP[Page product pub]
-LOG[login page]
-CP[Catalogue page]
-PRO[product page]
-CAT[cart page]
-CPU{Cart pop up}
-VAL[Validate cart]
-PAY(payment page)
-TESTLOG{is user logged ?}
-TESTACCOUNT{user has account?}
-TESTADD{User add product ?}
-SIGNIN[create account]
-	
-	PRO-->TESTADD
-	CAT-->TESTLOG
-	TESTLOG -- no --> LOG
-	LOG --> TESTACCOUNT
-	TESTACCOUNT -- yes --> TESTLOG
-	TESTACCOUNT -- no --> SIGNIN
-	SIGNIN --> TESTLOG
-	TESTLOG -- yes --> VAL
-	VAL --> PAY
-	FV --> PS
-	PS -- Click open --> PPP
-	PS -- Click close --> CP
-	CP --> PRO
-	PPP --> TESTADD
-	TESTADD -- yes --> CPU
-	TESTADD -- no --> CP
-	CPU -- Access cart --> CAT
-	CPU -- Catalogue page --> CP
-	CP -- Add to cart --> CPU
-	
-```
-
-```mermaid
----
-title : As an new user I can see a suggested product
+title : As a new user I can see a suggested product
 ---
 flowchart TB
 
@@ -144,6 +104,8 @@ CP[Catalogue page]
 	FV --> PS
 	PS -- Click open --> PPP
 	PS -- Click close --> CP
+style FV stroke:green
+
 ```
 ```mermaid
 ---
@@ -165,6 +127,7 @@ TESTADD{User add product ?}
 	CPU -- Access cart --> CAT
 	CPU -- Catalogue page --> CP
 	CP -- Add to cart --> CPU
+style CP stroke:green
 ```
 ```mermaid
 ---
@@ -189,5 +152,5 @@ SIGNIN[create account]
 	SIGNIN --> TESTLOG
 	TESTLOG -- yes --> VAL
 	VAL --> PAY
-	
+style CAT stroke:green
 ```
