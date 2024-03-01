@@ -116,15 +116,13 @@ flowchart TB
 CP[Catalogue page // product page]
 CAT[cart page]
 CPU{Cart pop up}
-
-TESTADD{User add product ?}
+ATC((Add to cart
+button))
 	
-	CP-->TESTADD
-	TESTADD -- yes --> CPU
-	TESTADD -- no --> CP
-	CPU -- Access cart --> CAT
-	CPU -- Catalogue page --> CP
-	CP -- Add to cart --> CPU
+
+	CPU -- buying funnel --> CAT
+	CPU -- Continue buying --> CP
+	CP --> ATC --> CPU
 style CP stroke:green
 ```
 ```mermaid
