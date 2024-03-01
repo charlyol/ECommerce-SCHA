@@ -4,7 +4,7 @@ erDiagram
 users }o--|| roles : "has"
 roles ||--|| permissions : "has"
 users ||--o{ adresses: "has"
-users ||--o{ payment_methods : "has"
+users ||--o{ payment_methods :  "has"
 users ||--o{ orders : "has"
 comments }o--|| users : "post"
 books ||--o{ comments : "has"
