@@ -123,7 +123,7 @@ TESTADD{User add product ?}
 	PRO-->TESTADD
 	CP --> PRO
 	TESTADD -- yes --> CPU
-	TESTADD -- no --> CP
+	TESTADD -- no --> PRO
 	CPU -- Access cart --> CAT
 	CPU -- Catalogue page --> CP
 	CP -- Add to cart --> CPU
