@@ -113,17 +113,16 @@ title : As an user i can add a book to my cart
 ---
 flowchart TB
 
-CP[Catalogue page]
-PRO[product page]
+CP[Catalogue page // product page]
 CAT[cart page]
 CPU{Cart pop up}
 
 TESTADD{User add product ?}
 	
-	PRO-->TESTADD
-	CP --> PRO
+	CP-->TESTADD
+	CP --> CP
 	TESTADD -- yes --> CPU
-	TESTADD -- no --> PRO
+	TESTADD -- no --> CP
 	CPU -- Access cart --> CAT
 	CPU -- Catalogue page --> CP
 	CP -- Add to cart --> CPU
