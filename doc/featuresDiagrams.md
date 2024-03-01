@@ -1,4 +1,7 @@
 ```mermaid
+---
+title: As user I can post a comment
+---
 flowchart TB
 
 LOG[Login page]
@@ -22,7 +25,7 @@ VPS(Validate comment)
 
 ```mermaid
 ---
-title : As an artist i create my page .
+title : As an artist i create my page
 ---
 flowchart TB
 
@@ -44,10 +47,12 @@ style CAP stroke:green
 	SIGNIN --> TESTLOG
 	TESTART -- yes --> APC
 	TESTART -- no --> ACD
-	
 ```
 
 ```mermaid
+---
+title : As an admin i create a new product
+---
 flowchart TB
 
 SI(Site page)
@@ -65,6 +70,9 @@ TESTAD -- 	no --> ACD
 	
 ```
 ```mermaid
+---
+title : As an user i can becaume a journalist
+---
 flowchart TB
 
 CRE(Create journalist account)
@@ -81,6 +89,9 @@ SPP -- no --> USA
 ```
 
 ```mermaid
+---
+title : As an new user I can see a suggested product
+---
 flowchart TB
 
 FV(First visit)
@@ -117,5 +128,66 @@ SIGNIN[create account]
 	CPU -- Access cart --> CAT
 	CPU -- Catalogue page --> CP
 	CP -- Add to cart --> CPU
+	
+```
+
+```mermaid
+---
+title : As an new user I can see a suggested product
+---
+flowchart TB
+
+FV(First visit)
+PS{Popup suggestion}
+PPP[Page product popup]
+CP[Catalogue page]
+	FV --> PS
+	PS -- Click open --> PPP
+	PS -- Click close --> CP
+```
+```mermaid
+---
+title : As an user i can add a book to my cart
+---
+flowchart TB
+
+CP[Catalogue page]
+PRO[product page]
+CAT[cart page]
+CPU{Cart pop up}
+
+TESTADD{User add product ?}
+	
+	PRO-->TESTADD
+	CP --> PRO
+	TESTADD -- yes --> CPU
+	TESTADD -- no --> CP
+	CPU -- Access cart --> CAT
+	CPU -- Catalogue page --> CP
+	CP -- Add to cart --> CPU
+```
+```mermaid
+---
+title : As an user i can validatye my cart
+---
+flowchart TB
+
+LOG[login page]
+
+CAT[cart page]
+VAL[Validate cart]
+PAY(payment page)
+TESTLOG{is user logged ?}
+TESTACCOUNT{user has account?}
+SIGNIN[create account]
+	
+	CAT-->TESTLOG
+	TESTLOG -- no --> LOG
+	LOG --> TESTACCOUNT
+	TESTACCOUNT -- yes --> TESTLOG
+	TESTACCOUNT -- no --> SIGNIN
+	SIGNIN --> TESTLOG
+	TESTLOG -- yes --> VAL
+	VAL --> PAY
 	
 ```
