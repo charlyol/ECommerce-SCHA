@@ -120,7 +120,6 @@ CPU{Cart pop up}
 TESTADD{User add product ?}
 	
 	CP-->TESTADD
-	CP --> CP
 	TESTADD -- yes --> CPU
 	TESTADD -- no --> CP
 	CPU -- Access cart --> CAT
