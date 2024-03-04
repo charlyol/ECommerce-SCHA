@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('nickname', 50);
             $table->unsignedInteger('age');
             $table->string('pic_path', 255);
-            $table->foreign('user_uuid')->references('uuid')->on('roles');
+            $table->foreign('roles_uuid')->references('uuid')->on('roles');
             $table->timestamps();
         });
     }
