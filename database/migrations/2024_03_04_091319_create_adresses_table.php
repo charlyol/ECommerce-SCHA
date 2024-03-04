@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('adresses', function (Blueprint $table) {
-            $table->id();
+            $table->uuid();
             $table->string('adress', 250);
             $table->bigInteger('zip_code');
-            $table->foreignId('users_id');
+            $table->foreignUuid('users_uuid');
             $table->timestamps();
         });
     }

@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('payment_methods', function (Blueprint $table) {
-            $table->uuid();
-            $table->string('api_uuid', 100);
-            $table->foreignUuid('user_uuid');
+        Schema::create('comments', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('users_uuid');
+            $table->foreignId('books_uuid');
+            $table->string('body', 500);
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('payment_methods');
+        Schema::dropIfExists('comments');
     }
 };

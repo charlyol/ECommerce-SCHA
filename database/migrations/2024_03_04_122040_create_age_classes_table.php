@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('payment_methods', function (Blueprint $table) {
-            $table->uuid();
-            $table->string('api_uuid', 100);
-            $table->foreignUuid('user_uuid');
+        Schema::create('age_classes', function (Blueprint $table) {
+            $table->Uuid();
+            $table->string('name', 100);
             $table->timestamps();
         });
     }
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('payment_methods');
+        Schema::dropIfExists('age_classes');
     }
 };
