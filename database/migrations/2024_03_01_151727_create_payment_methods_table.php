@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('payment_methods', function (Blueprint $table) {
             $table->uuid();
-            $table->string('api_id', 100);
-            $table->foreignUuid('user_id');
+            $table->string('api_uuid', 100);
+            $table->foreignUuid('user_uuid');
             $table->timestamps();
         });
     }
