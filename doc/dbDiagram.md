@@ -64,7 +64,6 @@ bigInt(unsigned) id
 foreignKey orders_id
 int(unsigned)  quantity
 float(unsigned) price_wt
-bigInt(unsigned) id
 string(100) title
 }
 comments {
