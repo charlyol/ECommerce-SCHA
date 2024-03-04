@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('adresses', function (Blueprint $table) {
-            $table->uuid();
+            $table->uuid('id')->primary();
             $table->string('adress', 250);
             $table->bigInteger('zip_code');
             $table->foreignUuid('users_uuid');
