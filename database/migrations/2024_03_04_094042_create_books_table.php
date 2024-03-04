@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('books', function (Blueprint $table) {
-            $table->id();
+            $table->uuid();
             $table->string('title', 100);
             $table->string('description', 1000);
             $table->string('summary', 200);
@@ -20,8 +20,8 @@ return new class extends Migration
             $table->unsignedInteger('page_quantity');
             $table->unsignedFloat('price_wt');
             $table->unsignedFloat('weight');
-            $table->foreignId('sagas_id');
-            $table->foreignId('age_classes_id');
+            $table->foreignUuid('sagas_id');
+            $table->foreignUuid('age_classes_id');
             $table->timestamps();
         });
     }
