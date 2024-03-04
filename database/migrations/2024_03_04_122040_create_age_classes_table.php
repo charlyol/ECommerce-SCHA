@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('age_classes', function (Blueprint $table) {
-            $table->Uuid();
+            $table->uuid('id')->primary();
             $table->string('name', 100);
             $table->timestamps();
         });

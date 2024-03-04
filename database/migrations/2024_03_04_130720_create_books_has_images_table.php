@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('books_has_images', function (Blueprint $table) {
-            $table->uuidid();
+            $table->uuid('id')->primary();
             $table->foreignUuid('books_id')->constrained();
             $table->foreignUuid('images_id')->constrained();
             $table->timestamps();
