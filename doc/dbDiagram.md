@@ -2,7 +2,8 @@
 ```mermaid
 erDiagram
 users }o--|| roles : "has"
-roles ||--|| permissions : "has"
+roles ||--o{ permissions_has_roles : "has"
+permissions_has_roles }o--|| permissions : "has"
 users ||--o{ adresses: "has"
 users ||--o{ payment_methods :  "has"
 users ||--o{ orders : "has"
@@ -20,8 +21,13 @@ roles {
 bigInt(unsigned) id
 string(100) name
 }
+permissions_has_roles {
+    foreignKey roles_id
+    foreignKey permissions_id
+}
 permissions{
 bigInt(unsigned) id
+string(100) name
 }
 users {
 bigInt(unsigned) id
