@@ -15,7 +15,6 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('adress', 250);
             $table->bigInteger('zip_code');
-            $table->foreignUuid('users_uuid');
             $table->timestamps();
         });
     }

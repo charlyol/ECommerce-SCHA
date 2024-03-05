@@ -20,8 +20,6 @@ return new class extends Migration
             $table->unsignedInteger('page_quantity');
             $table->unsignedFloat('price_wt');
             $table->unsignedFloat('weight');
-            $table->foreignUuid('sagas_uuid');
-            $table->foreignUuid('age_classes_uuid');
             $table->timestamps();
         });
     }

@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('comments', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->string('body', 500);
-            $table->timestamps();
+        Schema::table('comments', function (Blueprint $table) {
+            $table->foreignUuid('book_id')->constrained();
+            $table->foreignUuid('user_id')->constrained();
         });
     }
 
@@ -23,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('comments');
+        //
     }
 };

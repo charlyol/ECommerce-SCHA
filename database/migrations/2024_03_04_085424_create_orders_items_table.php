@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('orders_items', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('orders_id');
             $table->unsignedInteger('quantity');
             $table->unsignedFloat('price_wt', 10, 2);
             $table->string('title', 100);
