@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('books_has_categories', function (Blueprint $table) {
-            $table->foreignUuid('books_id')->constrained();
-            $table->foreignUuid('categories_id')->constrained();
-            $table->timestamps();
+        Schema::table('books', function (Blueprint $table) {
+            $table->foreignUuid('saga_id')->constrained();
+            $table->foreignUuid('age_classe_id')->constrained();
         });
     }
 
@@ -23,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('books_has_categories');
+        //
     }
 };

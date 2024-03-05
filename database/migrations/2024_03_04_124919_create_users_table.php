@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->uuid();
+            $table->uuid('id')->primary();
             $table->string('first_name', 90);
             $table->string('last_name', 90);
             $table->string('password', 50);
@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('nickname', 50);
             $table->unsignedInteger('age');
             $table->string('pic_path', 255);
-            $table->foreign('roles_uuid')->references('uuid')->on('roles');
+            $table->foreignUuid('roles_id')->constrained();
             $table->timestamps();
         });
     }
