@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('orders_items', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->unsignedInteger('quantity');
-            $table->unsignedFloat('price_wt', 10, 2);
-            $table->string('title', 100);
-            $table->timestamps();
+        Schema::table('order_items', function (Blueprint $table) {
+            $table->foreignUuid('order_id')->constrained();
         });
     }
 
@@ -25,6 +21,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('orders_items');
+        //
     }
 };

@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+
+use App\Models\AgeClass;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,8 +14,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(10)->creat();
-        User::factory(10)->unverified()->create();
+        $this->call([
+            CategorySeeder::class,
+            ImageSeeder::class,
+            RoleSeeder::class,
+            SagaSeeder::class,
+            UserSeeder::class,
+            AddressSeeder::class,
+            AgeClassSeeder::class,
+            BookSeeder::class,
+            OrderSeeder::class,
+            OrderItemSeeder::class,
+            PaymentMethodSeeder::class,
+            CommentSeeder::class,
+        ]);
+
     }
 }
 
