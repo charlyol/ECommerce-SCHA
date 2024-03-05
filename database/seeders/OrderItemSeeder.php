@@ -2,16 +2,18 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\OrderItem;
 use Illuminate\Database\Seeder;
 
-class AdressSeeder extends Seeder
+class OrderItemSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        //
+        OrderItem::factory()
+            ->count(15)
+            ->create();
     }
 }
