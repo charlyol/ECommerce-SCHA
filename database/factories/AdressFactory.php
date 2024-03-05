@@ -2,14 +2,14 @@
 
 namespace Database\Factories;
 
-use App\Models\Adress;
+use App\Models\Address;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Adress>
+ * @extends Factory<Address>
  */
-class AdressFactory extends Factory
+class AddressFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,7 +19,7 @@ class AdressFactory extends Factory
     public function definition(): array
     {
         return [
-            'adress'=>$this->faker->address(),
+            'Address'=>$this->faker->address(),
             'zip_code'=>$this->faker->postcode(),
             'users_id'=>User::all()->random()->id,
         ];

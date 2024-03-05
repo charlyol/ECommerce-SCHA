@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             SagaSeeder::class,
             UserSeeder::class,
-            AdressSeeder::class,
+            AddressSeeder::class,
         ]);
 
     }

@@ -4,7 +4,7 @@ erDiagram
 users }o--|| roles : "has"
 roles ||--o{ permissions_has_roles : "has"
 permissions_has_roles }o--|| permissions : "has"
-users ||--o{ adresses: "has"
+users ||--o{ Addresses: "has"
 users ||--o{ payment_methods :  "has"
 users ||--o{ orders : "has"
 comments }o--|| users : "post"
@@ -40,9 +40,9 @@ int(unsigned) age
 string(255) pic_path
 foreignKey roles_id
 }
-adresses {
+Addresses {
 bigInt(unsigned) id
-string(250) adress
+string(250) Address
 bigInt(unsigned) zip_code
 foreignKey users_id
 }
