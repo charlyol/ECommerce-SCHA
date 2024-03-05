@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('books', function (Blueprint $table) {
             $table->foreignUuid('saga_id')->constrained();
-            $table->foreignUuid('age_classe_id')->constrained();
+            $table->foreignUuid('age_class_id')->constrained();
         });
     }
 
