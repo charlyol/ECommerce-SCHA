@@ -2,18 +2,18 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
+use App\Models\Saga;
 use Illuminate\Database\Seeder;
 
-class CategorySeeder extends Seeder
+class SagaSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Category::factory()
-            ->count(5)
+        Saga::factory()
+            ->count(7)
             ->create();
     }
 }

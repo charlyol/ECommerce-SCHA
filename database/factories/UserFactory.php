@@ -2,12 +2,14 @@
 
 namespace Database\Factories;
 
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * @extends Factory<User>
  */
 class UserFactory extends Factory
 {
@@ -26,11 +28,11 @@ class UserFactory extends Factory
         return [
             'first_name' => fake()->firstNameMale(),
             'last_name' => fake()->lastName(),
-            'nickname' => fake()->company(),
+            'nickname' => fake()->userName(),
             'age' => fake()->numberBetween(15, 80),
             'email' => fake()->unique()->safeEmail(),
             'password' => static::$password ??= Hash::make('password'),
-            'roles_id' => fake()->uuid(),
+            'roles_id' => Role::all()->random()->id,
             'pic_path' => fake()->text(),
 
         ];
