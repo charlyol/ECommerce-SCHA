@@ -19,9 +19,9 @@ class AddressFactory extends Factory
     public function definition(): array
     {
         return [
-            'Address'=>$this->faker->address(),
+            'address'=>$this->faker->address(),
             'zip_code'=>$this->faker->postcode(),
-            'users_id'=>User::all()->random()->id,
+            'user_id'=>User::all()->random()->id,
         ];
     }
 }

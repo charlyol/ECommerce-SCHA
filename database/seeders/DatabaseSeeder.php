@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 
 
+use App\Models\AgeClass;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,6 +21,12 @@ class DatabaseSeeder extends Seeder
             SagaSeeder::class,
             UserSeeder::class,
             AddressSeeder::class,
+            AgeClassSeeder::class,
+            BookSeeder::class,
+            OrderSeeder::class,
+            OrderItemSeeder::class,
+            PaymentMethodSeeder::class,
+            CommentSeeder::class,
         ]);
 
     }

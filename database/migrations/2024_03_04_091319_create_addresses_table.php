@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('Addresses', function (Blueprint $table) {
-            $table->foreignUuid('user_id')->constrained();
+        Schema::create('addresses', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('address', 250);
+            $table->bigInteger('zip_code');
+            $table->timestamps();
         });
     }
 
@@ -21,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('addresses');
     }
 };
