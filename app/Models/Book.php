@@ -29,4 +29,8 @@ class Book extends Model
     {
         return $this->belongsTo(Saga::class);
     }
+    public function comment(): HasMany
+    {
+        return $this->hasMany(Comment::class);
+    }
 }
