@@ -18,7 +18,7 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->currencyCode()
+            'name' => $this->faker->name()
         ];
     }
 }
