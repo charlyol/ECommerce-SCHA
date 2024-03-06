@@ -15,11 +15,11 @@ class Book extends Model
     use HasFactory;
     public function category(): HasMany
     {
-        return $this->hasMany(Book::class,'books_has_categories');
+        return $this->hasMany(Category::class,'books_has_categories');
     }
     public function image(): HasMany
     {
-        return $this->hasMany(Book::class,'books_has_images');
+        return $this->hasMany(Image::class,'books_has_images');
     }
     public function ageClass(): BelongsTo
     {
@@ -32,5 +32,9 @@ class Book extends Model
     public function comment(): HasMany
     {
         return $this->hasMany(Comment::class);
+    }
+    public function user(): HasMany
+    {
+        return $this->hasMany(User::class,'books_has_categories');
     }
 }
