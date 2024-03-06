@@ -23,8 +23,8 @@ class BookSeeder extends Seeder
         $categories=Category::all()->pluck('id');
         foreach ($books as $book) {
             $book->user()->attach($users[rand(0,$users->count()-1)]);
-            // $book->user()->attach($images[rand(0,$images->count()-1)]);
-            // $book->user()->attach($categories[rand(0,$categories->count()-1)]);
+            $book->image()->attach($images[rand(0,$images->count()-1)]);
+            $book->category()->attach($categories[rand(0,$categories->count()-1)]);
         }
 
 

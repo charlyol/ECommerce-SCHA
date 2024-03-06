@@ -14,13 +14,13 @@ class Book extends Model
 {
     use HasUuids;
     use HasFactory;
-    public function category(): HasMany
+    public function category(): BelongsToMany
     {
-        return $this->hasMany(Category::class,'books_has_categories');
+        return $this->belongsToMany(Category::class,'books_has_categories');
     }
-    public function image(): HasMany
+    public function image(): BelongsToMany
     {
-        return $this->hasMany(Image::class,'books_has_images');
+        return $this->belongsToMany(Image::class,'books_has_images');
     }
     public function ageClass(): BelongsTo
     {
@@ -30,9 +30,9 @@ class Book extends Model
     {
         return $this->belongsTo(Saga::class);
     }
-    public function comment(): HasMany
+    public function comment(): BelongsToMany
     {
-        return $this->hasMany(Comment::class);
+        return $this->belongsToMany(Comment::class);
     }
     public function user(): BelongsToMany
     {
