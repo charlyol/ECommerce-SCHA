@@ -18,13 +18,13 @@ class OrderItemFactory extends Factory
      */
     public function definition(): array
     {
-        $book = Book::factory()->create();
+        $price = Book::all()->random()->price_wt;
         return [
             'id'=>fake()->uuid(),
             'order_id'=>Order::all()->random()->id,
             'quantity' => fake()->numberBetween(1,50),
-            'price_wt' => $book->price_wt,
-            'title'=>$book->title,
+            'price_wt' => $price,
+            'title' => Book::where('price_wt', $price)->first()->title,
         ];
     }
 }
