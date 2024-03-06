@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
@@ -33,8 +34,8 @@ class Book extends Model
     {
         return $this->hasMany(Comment::class);
     }
-    public function user(): HasMany
+    public function user(): BelongsToMany
     {
-        return $this->hasMany(User::class,'books_has_categories');
+        return $this->belongsToMany(User::class,'books_has_users');
     }
 }

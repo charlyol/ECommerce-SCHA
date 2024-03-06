@@ -18,8 +18,8 @@
     <body class="antialiased">
 
     <?php
-    $test=\App\Models\Comment::all()->first();
-        dd($test->book()->first());
+    $test=\App\Models\Book::all()->first();
+        dd($test->user()->first());
     ?>
         <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
             @if (Route::has('login'))
