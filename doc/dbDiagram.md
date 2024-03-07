@@ -9,17 +9,24 @@ users ||--o{ payment_methods :  "has"
 users ||--o{ orders : "has"
 comments }o--|| users : "post"
 books ||--o{ comments : "has"
-books }o--|| sagas : "has"
-books }o--|| age_classes : "has"
+books ||--o{books_has_users : "has"
+books_has_users }o--||users : "has"
 books ||--o{ books_has_categories : "has"
 books_has_categories }o--||  categories : "has"
 books ||--o{ books_has_images : "has"
 books_has_images }o--|| images : "has"
 orders ||--o{ orders_items : "has"
+books }o--|| sagas : "has"
+books }o--|| age_classes : "has"
+
 
 roles {
 bigInt(unsigned) id
 string(100) name
+}
+books_has_users {
+    foreignKey users_id
+    foreignKey books_id
 }
 permissions_has_roles {
     foreignKey roles_id
@@ -57,6 +64,7 @@ string(100) order_ref
 timestamp(Y-m-d) created_at
 date(Y-m-d) delivery_date
 string(50) status
+foreignKey users_id
 }
 
 orders_items {
