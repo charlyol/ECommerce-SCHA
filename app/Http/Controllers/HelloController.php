@@ -8,6 +8,6 @@ class HelloController extends Controller
 {
     public function greet()
     {
-        return view('hello');
+        return view('hello.hello');
     }
 }
