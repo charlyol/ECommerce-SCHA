@@ -17,10 +17,10 @@ return new class extends Migration
             $table->string('last_name', 90);
             $table->string('password');
             $table->string('email', 200);
-            $table->string('nickname', 50);
-            $table->unsignedInteger('age');
-            $table->string('pic_path', 255);
-            $table->foreignUuid('roles_id')->constrained();
+            $table->string('nickname', 50)->nullable();
+            $table->unsignedInteger('age')->nullable();
+            $table->string('pic_path', 255)->nullable();
+            $table->foreignUuid('roles_id') ->nullable();
             $table->timestamps();
         });
     }
