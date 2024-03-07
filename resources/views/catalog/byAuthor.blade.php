@@ -9,7 +9,6 @@
 </head>
 <body>
     <div>
-
         <?php foreach ($comments as $comment) : ?>
         <blockquote>
             {{$comment->body}}
@@ -22,7 +21,7 @@
             </footer>
         </blockquote>
         <?php endforeach;?>
-        {{$comments->links() }}
-    </div> 
+    </div>
+    {{$comments->links()}}
 </body>
 </html>
