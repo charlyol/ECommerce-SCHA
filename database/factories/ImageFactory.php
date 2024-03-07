@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Book;
 use App\Models\Image;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -19,7 +20,9 @@ class ImageFactory extends Factory
     {
         return [
             'type'=>$this->faker->userName(),
-            'path'=>$this->faker->url(),
+            'path'=>function () {
+                return 'https://via.placeholder.com/300x200';
+            },
             'alt_text'=>$this->faker->text(100)
         ];
     }
