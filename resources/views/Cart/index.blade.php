@@ -111,7 +111,7 @@
 
                 </div>
                 <div class="mt-10">
-                    <button type="submit" class="w-full rounded-md border bg-grey px-4 py-3 text-base font-medium text-red shadow-sm hover:bg-indigo focus:outline-none focus:ring-2 focus:ring-indigo focus:ring-offset-2 focus:ring-offset-gray-50">Paiement</button>
+                    <button type="submit" class="w-full rounded-md border bg-gray-300 px-4 py-3 text-base font-medium text-red shadow-sm hover:bg-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo focus:ring-offset-2 focus:ring-offset-gray-50">Paiement</button>
                 </div>
 
                 <div class="mt-6 text-center text-sm text-gray-500">
