@@ -1,5 +1,7 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
+import { defineConfig } from "vite";
+import viteConfig from "./vite.config.js";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -10,6 +12,11 @@ export default {
     ],
 
     theme: {
+        colors: {
+            'red': '#dc2626',
+            'indigo': '#a5b4fc',
+            'sky': '#075985',
+        },
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
@@ -17,5 +24,7 @@ export default {
         },
     },
 
-    plugins: [forms],
+    plugins: [forms,
+        require('@tailwindcss/aspect-ratio'),
+    ],
 };

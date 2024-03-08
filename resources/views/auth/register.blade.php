@@ -1,7 +1,6 @@
 <x-guest-layout>
     <form method="POST" action="{{ route('register') }}">
         @csrf
-
         <!-- FirstName -->
         <div>
             <x-input-label for="first_name" :value="__('First Name')" />
@@ -15,7 +14,6 @@
             <x-text-input id="last_name" class="block mt-1 w-full" type="text" name="last_name" :value="old('last_name')" required autofocus autocomplete="last_name" />
             <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
         </div>
-
 
         <!-- Email Address -->
         <div class="mt-4">
@@ -51,7 +49,6 @@
             <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
                 {{ __('Already registered?') }}
             </a>
-
             <x-primary-button class="ms-4">
                 {{ __('Register') }}
             </x-primary-button>

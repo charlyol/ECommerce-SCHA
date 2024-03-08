@@ -30,9 +30,9 @@ class Book extends Model
     {
         return $this->belongsTo(Saga::class);
     }
-    public function comment(): BelongsToMany
+    public function comment(): HasMany
     {
-        return $this->belongsToMany(Comment::class);
+        return $this->hasMany(Comment::class);
     }
     public function user(): BelongsToMany
     {
