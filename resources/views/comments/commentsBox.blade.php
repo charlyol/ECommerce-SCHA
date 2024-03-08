@@ -1,4 +1,3 @@
-
 <div>
     <?php foreach ($comments as $comment) : ?>
     <blockquote>
@@ -13,3 +12,4 @@
     </blockquote>
     <?php endforeach;?>
 </div>
+{{$comments->links()}}

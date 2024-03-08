@@ -16,9 +16,12 @@ use function PHPUnit\Framework\isNull;
 
 class AugustinController extends Controller
 {
-    public function dataByAuthor (User $user) {
+    public function dataByAuthor (string $firstName , string $lastName) {
+        $user= User ::where("first_name", "=", $firstname)
+        ->where("last_name", "=", $lastname)
+        ->get();
         $books=Book::with('comment')->whereHas('user',function (Builder $query){
-            $query->where('id',	'9b818e29-9a07-422f-a40c-21d54313bb63');
+            $query->where('id',	$user->id);
         })->get();
         $booksIds=$books->pluck('id');
     $comments = Comment::whereIn('book_id', $booksIds)->paginate(3);
