@@ -10,12 +10,18 @@ use Illuminate\Contracts\Database\Eloquent\Builder;
 
 class AuthorController extends Controller
 {
+    public function authorByBook(Book $book)
+    {
+        // $book=Book::first();// faker
+        $author=$book->user()->get();
+        dd($author);
+    }
     public function dataByAuthor(string $firstName, string $lastName)
     {
         $user = User::where("first_name", "=", $firstName)
             ->where("last_name", "=", $lastName)->first();
         $books = Book::with('comment')->whereHas('user', function (Builder $query) use ($user) {
-            $query->where('id',    $user->id);
+            $query->where('id',$user->id);
         })->paginate(3);
         $commentController = new CommentController();
         $comments = $commentController->widgetByAuthor($user);
