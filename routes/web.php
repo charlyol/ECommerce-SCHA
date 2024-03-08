@@ -22,7 +22,7 @@ Route::get('/', function () {
 });
 Route::get('/books/{id}',[BookController::class, 'show']);
 Route::get('/cart/{id}', [App\Http\Controllers\CartController::class, 'view']);
-
+Route::get('/', [\App\Http\Controllers\CatalogController::class,'index']);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
