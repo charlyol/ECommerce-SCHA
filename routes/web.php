@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\HelloController;
+use App\Http\Controllers\AugustinController;
+use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +22,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/books/{id}',[BookController::class, 'show']);
-
+Route::get('/cart/{id}', [App\Http\Controllers\CartController::class, 'view']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -33,6 +35,10 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
-Route::get('/hello', [HelloController::class, 'greet']);
 
-Route::get('/cart/{id}', [App\Http\Controllers\CartController::class, 'view']);
+Route::get('/hello', [HelloController::class, 'greet']);
+Route::get('/{firstName}-{lastName}', [AuthorController::class, 'dataByAuthor']);
+// section du controller de test d'Augustin
+Route::get('/AugustinBricole', [AugustinController::class,'dataByAuthor']);
+Route::get('/hello', function () { return view('hello');});
+

@@ -14,7 +14,7 @@
         Simplicity is an acquired taste. <footer>- Katharine Gerould , <cite>Bob le bricolleur</cite> </footer>
     </blockquote>
     <blockquote>
-        Si j'avais une queue ele me ferait bondire, frétiller. <footer>- Katharine Gerould , <cite>Winnie the pooh</cite> </footer>
+        Si j'avais une queue elle me ferait bondire, frétiller. <footer>- Katharine Gerould , <cite>Winnie the pooh</cite> </footer>
     </blockquote>
 </body>
 </html>
