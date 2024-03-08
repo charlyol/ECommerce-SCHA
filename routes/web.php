@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\SagaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AugustinController;
 use App\Http\Controllers\AuthorController;
@@ -21,6 +22,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/books/{id}',[BookController::class, 'show']);
+Route::get('/sagas/{id}',[SagaController::class, 'index']);
 Route::get('/cart/{id}', [App\Http\Controllers\CartController::class, 'view']);
 Route::get('/', [\App\Http\Controllers\CatalogController::class,'index']);
 Route::get('/dashboard', function () {

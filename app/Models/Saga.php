@@ -17,5 +17,10 @@ class Saga extends Model
     {
         return $this->hasMany(Book::class);
     }
+    public function booksBySaga(string $uuid)
+    {
+    $books=Book::where('saga_id',$uuid)->get();
+    return $books;
+    }
 }
 
