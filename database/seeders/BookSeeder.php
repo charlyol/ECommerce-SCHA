@@ -18,7 +18,7 @@ class BookSeeder extends Seeder
     {
         Book::factory()->count(150)->create();
         $books=Book::all();
-        $users=User::all()->pluck('id');
+        $users=User::where('role_id', Role::where('name','author')->first()->pluck('id')->all())->pluck('id');
         $images=Image::all()->pluck('id');
         $categories=Category::all()->pluck('id');
         foreach ($books as $book) {

@@ -11,6 +11,6 @@ class BookController extends Controller
     {
         $book = Book::where('id', $uuid)->firstOrFail();
         return view('books.show', compact('book'));
-
     }
+
 }

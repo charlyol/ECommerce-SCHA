@@ -35,7 +35,6 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/hello', [HelloController::class, 'greet']);
 Route::get('/{firstName}-{lastName}', [AuthorController::class, 'dataByAuthor']);
 // section du controller de test d'Augustin
 Route::get('/AugustinBricole', [AugustinController::class,'dataByAuthor']);

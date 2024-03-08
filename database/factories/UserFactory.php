@@ -34,7 +34,8 @@ class UserFactory extends Factory
             'password' => static::$password ??= Hash::make('password'),
             'roles_id' => Role::all()->random()->id,
             'pic_path' => fake()->text(),
-
+            'bio' => fake()->sentences(6,true),
+            'role_id'=>Role::all()->random()->id,
         ];
     }
 
