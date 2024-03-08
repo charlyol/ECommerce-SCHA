@@ -5,12 +5,17 @@
     padding: 20px; width: 300px; margin: 20px auto;">
         "{{$comment->body}}"
         <footer class="mt-1 italic text-gray-500">
-            - {{$comment->user()->first()->first_name}} {{$comment->user()->first()->last_name}} 
+            @if( $comment->user()->first()->role()->first()->name =='author')
+            <a href="/{{$comment->user()->first()->first_name}}-{{$comment->user()->first()->last_name}}" >
+                - {{$comment->user()->first()->first_name}} {{$comment->user()->first()->last_name}}
+            </a>
+            @else
+            - {{$comment->user()->first()->first_name}} {{$comment->user()->first()->last_name}}
+            @endif
             - {{$comment->updated_at->format('d/m/Y')}},
             <cite >
                 {{$comment->book()->first()->title}}
             </cite>
-            
         </footer>
         {{$comment->user()->first()->role()->first()->name}}
     </blockquote>
