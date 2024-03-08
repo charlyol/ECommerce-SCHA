@@ -2,6 +2,7 @@
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
+<<<<<<< HEAD
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('Name')" />
@@ -9,6 +10,23 @@
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
+=======
+        <!-- FirstName -->
+        <div>
+            <x-input-label for="first_name" :value="__('First Name')" />
+            <x-text-input id="first_name" class="block mt-1 w-full" type="text" name="first_name" :value="old('first_name')" required autofocus autocomplete="first_name" />
+            <x-input-error :messages="$errors->get('first_name')" class="mt-2" />
+        </div>
+
+        <!-- LastName -->
+        <div>
+            <x-input-label for="last_name" :value="__('Last Name')" />
+            <x-text-input id="last_name" class="block mt-1 w-full" type="text" name="last_name" :value="old('last_name')" required autofocus autocomplete="last_name" />
+            <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
+        </div>
+
+
+>>>>>>> develop
         <!-- Email Address -->
         <div class="mt-4">
             <x-input-label for="email" :value="__('Email')" />
@@ -40,7 +58,11 @@
         </div>
 
         <div class="flex items-center justify-end mt-4">
+<<<<<<< HEAD
             <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
+=======
+            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
+>>>>>>> develop
                 {{ __('Already registered?') }}
             </a>
 
