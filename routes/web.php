@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\SagaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HelloController;
 use Illuminate\Support\Facades\Route;
@@ -20,7 +21,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/books/{id}',[BookController::class, 'show']);
-
+Route::get('/sagas/{id}',[SagaController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
