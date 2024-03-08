@@ -13,6 +13,6 @@ class Image extends Model
     use HasUuids;
     public function book(): HasMany
     {
-        return $this->hasMany(Book::class,'books_has_images');
+        return $this->hasMany(Book::class,'books');
     }
 }

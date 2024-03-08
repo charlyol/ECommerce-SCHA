@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\HelloController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/books/{id}',[BookController::class, 'show']);
 
-Route::get('/cart/{id}', [App\Http\Controllers\CartController::class, 'view']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -31,3 +33,6 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+Route::get('/hello', [HelloController::class, 'greet']);
+
+Route::get('/cart/{id}', [App\Http\Controllers\CartController::class, 'view']);
