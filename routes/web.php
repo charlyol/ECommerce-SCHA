@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/cart', [App\Http\Controllers\CartController::class, 'view']);
+Route::get('/cart/{id}', [App\Http\Controllers\CartController::class, 'view']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
