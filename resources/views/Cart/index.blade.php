@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 @vite('resources/css/app.css')
+{{--    @extends('layouts.app')--}}
     <title>Votre Panier</title>
 
     <!-- Fonts -->
@@ -124,5 +125,5 @@
         </form>
     </div>
 </div>
-
+@include('layouts.footer')
 </body>
