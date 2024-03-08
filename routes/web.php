@@ -21,7 +21,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/books/{id}',[BookController::class, 'show']);
+Route::get('/books/{id}',[BookController::class, 'show'])->name('books.show');
+Route::get('/book/add',[BookController::class, 'create'])->name('book.add');
+Route::post('/book/store',[BookController::class, 'store'])->name('book.store');
 Route::get('/sagas/{id}',[SagaController::class, 'index']);
 Route::get('/cart/{id}', [App\Http\Controllers\CartController::class, 'view']);
 Route::get('/', [\App\Http\Controllers\CatalogController::class,'index']);
