@@ -1,3 +1,4 @@
+@extends('layouts.app')
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,6 +9,7 @@
     @vite('resources/css/app.css')
     <title>SCHA</title>
 </head>
+@section('Content')
 <body>
 
 
@@ -46,4 +48,5 @@
 
 
 </body>
+@endsection
 </html>
