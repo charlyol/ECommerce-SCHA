@@ -13,7 +13,7 @@ class ImageSeeder extends Seeder
     public function run(): void
     {
         Image::factory()
-            ->count(300)
+            ->count(3)
             ->create();
     }
 }

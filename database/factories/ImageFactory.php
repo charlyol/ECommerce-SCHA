@@ -16,17 +16,17 @@ class ImageFactory extends Factory
      *
      * @return array<string, mixed>
      */
+ 
     public function definition(): array
     {
         $typeOptions = ['banner', 'cover', 'widget'];
-        foreach ($typeOptions as $type) {
+        $type = $this->faker->unique()->randomElement($typeOptions);
             return [
                 'type' => $type,
-                'path' => function ($type) {
-                    if ($type == 'banner') {return 'https://placehold.co/1440x630';}
+                'path' => function () use($type) {
+                    if ($type == "banner") {return 'https://placehold.co/1440x630';}
                     else                   {return 'https://placehold.co/250x250';}},
                 'alt_text' => $this->faker->text(100),
             ];
-        }
     }
 }
