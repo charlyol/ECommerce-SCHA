@@ -18,10 +18,11 @@ class ImageFactory extends Factory
      */
     public function definition(): array
     {
+        $typeOptions=['banner', 'cover', 'widget'];
         return [
-            'type'=>$this->faker->userName(),
+            'type'=>$this->faker->randomElement($typeOptions),
             'path'=>function () {
-                return 'https://via.placeholder.com/300x200';
+                return 'https://placehold.co/250x300';
             },
             'alt_text'=>$this->faker->text(100)
         ];

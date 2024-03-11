@@ -38,4 +38,14 @@ class Book extends Model
     {
         return $this->belongsToMany(User::class,'books_has_users');
     }
+    public function authorByBook(Book $book)
+    {
+        // $book=Book::first();// faker
+        $authors=$book->user()->get();
+        return $authors;
+    }
+    public function coverByBook () {
+        $images=$this->image()->where('type', 'cover')->get()->pluck('path');
+        return $images;
+    }
 }
