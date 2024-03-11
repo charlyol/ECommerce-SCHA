@@ -1,10 +1,11 @@
+@extends('layouts.app')
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 @vite('resources/css/app.css')
-{{--    @extends('layouts.app')--}}
+
     <title>Votre Panier</title>
 
     <!-- Fonts -->
@@ -17,6 +18,7 @@
     </style>
 </head>
 <body>
+@section('Content')
 <div class="bg-white">
     <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
         <h1 class="text-3xl font-bold tracking-tight text-gray-900">Ton incroyable panier</h1>
@@ -109,7 +111,7 @@
 
                 </div>
                 <div class="mt-10">
-                    <button type="submit" class="w-full rounded-md border bg-grey px-4 py-3 text-base font-medium text-red shadow-sm hover:bg-indigo focus:outline-none focus:ring-2 focus:ring-indigo focus:ring-offset-2 focus:ring-offset-gray-50">Paiement</button>
+                    <button type="submit" class="w-full rounded-md border bg-gray-300 px-4 py-3 text-base font-medium text-red shadow-sm hover:bg-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo focus:ring-offset-2 focus:ring-offset-gray-50">Paiement</button>
                 </div>
 
                 <div class="mt-6 text-center text-sm text-gray-500">
@@ -125,5 +127,5 @@
         </form>
     </div>
 </div>
-@include('layouts.footer')
+@endsection
 </body>

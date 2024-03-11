@@ -12,11 +12,6 @@ export default {
     ],
 
     theme: {
-        colors: {
-            'red': '#dc2626',
-            'indigo': '#a5b4fc',
-            'sky': '#075985',
-        },
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
