@@ -16,7 +16,7 @@ class BookSeeder extends Seeder
      */
     public function run(): void
     {
-        Book::factory()->count(150)->create();
+        Book::factory()->count(100)->create();
         $books=Book::all();
         $users=User::where('role_id', Role::where('name','author')->first()->pluck('id')->all())->pluck('id');
         $images=Image::all()->pluck('id');

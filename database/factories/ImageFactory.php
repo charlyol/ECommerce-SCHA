@@ -18,13 +18,15 @@ class ImageFactory extends Factory
      */
     public function definition(): array
     {
-        $typeOptions=['banner', 'cover', 'widget'];
-        return [
-            'type'=>$this->faker->randomElement($typeOptions),
-            'path'=>function () {
-                return 'https://placehold.co/250x300';
-            },
-            'alt_text'=>$this->faker->text(100)
-        ];
+        $typeOptions = ['banner', 'cover', 'widget'];
+        foreach ($typeOptions as $type) {
+            return [
+                'type' => $type,
+                'path' => function ($type) {
+                    if ($type == 'banner') {return 'https://placehold.co/1440x630';}
+                    else                   {return 'https://placehold.co/250x250';}},
+                'alt_text' => $this->faker->text(100),
+            ];
+        }
     }
 }
