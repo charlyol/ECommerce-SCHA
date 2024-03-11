@@ -43,4 +43,5 @@ Route::get('/{firstName}-{lastName}', [AuthorController::class, 'dataByAuthor'])
 // section du controller de test d'Augustin
 Route::get('/AugustinBricole', [AugustinController::class,'dataByAuthor']);
 Route::get('/hello', function () { return view('hello');});
+Route::get('/footer',[\App\Http\Controllers\CategoryController::class,'index'])->name('components.footer');
 
