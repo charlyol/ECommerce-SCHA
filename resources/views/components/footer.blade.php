@@ -14,13 +14,13 @@
 
             <div>
                 @foreach($categories->take($half) as $id => $name)
-                    <div><a class="link link-hover" href="/">{{ $name }}</a></div>
+                    <div><a class="link link-hover" href="?sort=name {{ isset($sort) && $sort === 'name' }}">{{ $name }}</a></div>
                 @endforeach
             </div>
 
             <div>
                 @foreach($categories->slice($half) as $id => $name)
-                    <div><a class="link link-hover" href="/">{{ $name }}</a></div>
+                    <div><a class="link link-hover" href="?sort=name {{ isset($sort) && $sort === 'name' }}">{{ $name }}</a></div>
                 @endforeach
             </div>
         </div>
