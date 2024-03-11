@@ -20,15 +20,13 @@ class BookSeeder extends Seeder
         $books=Book::all();
         $users=User::where('role_id', Role::where('name','author')->first()->pluck('id')->all())
         ->pluck('id');
-        $banners=Image::where('type','banner')->first()->pluck('id');
-        $covers=Image::where('type','cover')->first()->pluck('id');
-        $widgets=Image::where('type','widget')->first()->pluck('id');
+        $images=Image::all()->pluck('id');
         $categories=Category::all()->pluck('id');
         foreach ($books as $book) {
             $book->user()->attach($users[rand(0,$users->count()-1)]);
-            $book->image()->attach($banners[rand(0,$banners->count()-1)]);
-            $book->image()->attach($covers[rand(0,$covers->count()-1)]);
-            $book->image()->attach($widgets[rand(0,$widgets->count()-1)]);
+            for ($i=0 ; $i<count($images) ; $i++) {
+                $book->image()->attach($images[$i]);
+            }
             $book->category()->attach($categories[rand(0,$categories->count()-1)]);
         }
 

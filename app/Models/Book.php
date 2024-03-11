@@ -48,4 +48,8 @@ class Book extends Model
         $images=$this->image()->where('type', 'cover')->get()->pluck('path');
         return $images;
     }
+    public function bannerByBook () {
+        $images=$this->image()->where('type', 'banner')->get()->pluck('path');
+        return $images;
+    }
 }

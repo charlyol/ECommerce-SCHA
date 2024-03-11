@@ -6,7 +6,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AugustinController;
 use App\Http\Controllers\AuthorController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\CartController;
+use \App\Http\Controllers\CatalogController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,24 +18,21 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [CatalogController::class,'index'])->name('home');
+Route::get('/welcome', function () {return view('welcome');});
 Route::get('/books/{id}',[BookController::class, 'show'])->name('books.show');
 Route::get('/book/add',[BookController::class, 'create'])->name('book.add');
 Route::post('/book/store',[BookController::class, 'store'])->name('book.store');
 Route::get('/sagas/{id}',[SagaController::class, 'index']);
-Route::get('/cart/{id}', [App\Http\Controllers\CartController::class, 'view']);
-Route::get('/', [\App\Http\Controllers\CatalogController::class,'index']);
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/cart/{id}', [CartController::class, 'view']);
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/dashboard', function () {return view('dashboard');})->name('dashboard');
 });
 
 require __DIR__.'/auth.php';
