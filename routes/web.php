@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SagaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AugustinController;
@@ -21,12 +22,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/welcome', function () {
     return view('welcome');
 });
+Route::get('/categories', [CategoryController::class, 'sort'])->name('categories.sort');
 Route::get('/books/{id}',[BookController::class, 'show'])->name('books.show');
 Route::get('/book/add',[BookController::class, 'create'])->name('book.add');
 Route::post('/book/store',[BookController::class, 'store'])->name('book.store');
 Route::get('/sagas/{id}',[SagaController::class, 'index']);
 Route::get('/cart/{id}', [App\Http\Controllers\CartController::class, 'view']);
-Route::get('/', [\App\Http\Controllers\CatalogController::class,'index'])->name('catalog.index');
+Route::get('/', [\App\Http\Controllers\CatalogController::class,'index'])->name('Home');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

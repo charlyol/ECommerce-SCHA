@@ -13,4 +13,11 @@ class CategoryController extends Controller
 
         return view('components.footer', compact('categories'));
     }
+    public function sort(Request $request)
+    {
+        $sort = $request->input('sort', 'name');
+        $categories = Category::orderBy($sort)->get();
+
+        return view('categories.index', compact('categories'));
+    }
 }

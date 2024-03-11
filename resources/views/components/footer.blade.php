@@ -14,28 +14,29 @@
 
             <div>
                 @foreach($categories->take($half) as $id => $name)
-                    <div>{{ $name }}</div>
+                    <div><a class="link link-hover" href="/">{{ $name }}</a></div>
                 @endforeach
             </div>
 
             <div>
                 @foreach($categories->slice($half) as $id => $name)
-                    <div>{{ $name }}</div>
+                    <div><a class="link link-hover" href="/">{{ $name }}</a></div>
                 @endforeach
             </div>
         </div>
+    </nav>
         <nav>
-            <h6 class="footer-title">Company</h6>
-            <a class="link link-hover">About us</a>
+            <h6 class="footer-title">Compagnie</h6>
+            <a class="link link-hover">A propos</a>
             <a class="link link-hover">Contact</a>
-            <a class="link link-hover">Jobs</a>
+            <a class="link link-hover">Postes à pourvoir</a>
             <a class="link link-hover">Press kit</a>
         </nav>
         <nav>
             <h6 class="footer-title">Legal</h6>
-            <a class="link link-hover">Terms of use</a>
+            <a class="link link-hover">Conditions Générales d'Utilisation</a>
             <a class="link link-hover">Privacy policy</a>
             <a class="link link-hover">Cookie policy</a>
         </nav>
-    </nav>
+
 </footer>
