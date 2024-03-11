@@ -117,7 +117,7 @@
                 <div class="mt-6 text-center text-sm text-gray-500">
                     <p>
                         or
-                        <a href="#" class="font-medium text-indigo-600 hover:text-sky">
+                        <a href="{{route('catalog.index')}}" class="font-medium text-indigo-600 hover:text-sky">
                             Continue Shopping
                             <span aria-hidden="true"> &rarr;</span>
                         </a>
