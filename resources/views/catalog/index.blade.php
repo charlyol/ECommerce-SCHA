@@ -1,6 +1,6 @@
 @extends('layouts.guest')
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -18,6 +18,6 @@
     @endforeach
 </div>
 {{ $catalog->links() }}
+    @endsection
 </body>
-@endsection
 </html>

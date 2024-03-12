@@ -9,6 +9,8 @@ use App\Http\Controllers\AuthorController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use \App\Http\Controllers\CatalogController;
+use App\Http\Controllers\CategoryController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,7 +21,7 @@ use \App\Http\Controllers\CatalogController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+Route::get('/categories', [CategoryController::class, 'sort'])->name('categories.sort');
 Route::get('/', [CatalogController::class,'index'])->name('home');
 Route::get('/welcome', function () {return view('welcome');});
 Route::get('/books/{id}',[BookController::class, 'show'])->name('books.show');
@@ -42,4 +44,5 @@ Route::middleware('auth')->group(function () {
 // section du controller de test d'Augustin
 Route::get('/AugustinBricole', [AugustinController::class,'dataByAuthor']);
 Route::get('/hello', function () { return view('hello');});
+Route::get('/footer',[\App\Http\Controllers\CategoryController::class,'index'])->name('components.footer');
 

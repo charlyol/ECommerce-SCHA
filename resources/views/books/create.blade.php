@@ -1,3 +1,4 @@
+@extends('layouts.app')
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,7 +10,7 @@
 
 </head>
 <body>
-
+@section('Content')
 <form method="POST" action="{{ route('book.store') }}">
     @csrf
     <label>
@@ -22,5 +23,6 @@
 <br>
     <button type="submit">Ajouter la BD</button>
 </form>
+    @endsection
 </body>
 </html>
