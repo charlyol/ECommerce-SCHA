@@ -21,7 +21,7 @@ use App\Http\Controllers\CategoryController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/categories', [CategoryController::class, 'sort'])->name('categories.sort');
+Route::get('/categories/{name}', [CategoryController::class, 'sort'])->name('categories.sort');
 Route::get('/', [CatalogController::class,'index'])->name('home');
 Route::get('/welcome', function () {return view('welcome');});
 Route::get('/books/{id}',[BookController::class, 'show'])->name('books.show');
