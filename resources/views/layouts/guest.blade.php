@@ -48,5 +48,6 @@
                 @yield('Content')
             @endif
         </main>
+        @include('components.footer')
     </body>
 </html>
