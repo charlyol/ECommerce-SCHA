@@ -1,5 +1,5 @@
 <div class="flex flex-col justify-between" style="background-color: white; box-shadow: 0 4px 8px rgb(184, 184, 184); padding: 20px; width: 300px; margin: 20px auto;">
-    <a href="/books/{{$book->id}}" class="text-sm">
+    <a href="{{route('books.show',['id'=> $book->id])}}" class="text-sm">
         <div class="">
             <img src="{{$book->coverByBook()[0]?? 'https://placehold.co/250x300'}}" alt="." class="h-full w-full object-cover object-center">
         </div>
@@ -17,7 +17,7 @@
                     Indisponible
                 </a>
             @else
-                <a href="#" class="inline-block px-4 py-1 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600">
+                <a href="{{route('addToCart',['book'=> $book->id])}}" class="inline-block px-4 py-1 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600">
                     Ajouter au panier
                 </a>
             @endif
