@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/welcome', function () {
     return view('welcome');
 });
-Route::get('/categories', [CategoryController::class, 'sort'])->name('categories.sort');
+Route::get('/categories/{name}', [CategoryController::class, 'sort'])->name('categories.sort');
 Route::get('/books/{id}',[BookController::class, 'show'])->name('books.show');
 Route::get('/book/add',[BookController::class, 'create'])->name('book.add');
 Route::post('/book/store',[BookController::class, 'store'])->name('book.store');

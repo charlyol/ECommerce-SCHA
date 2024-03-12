@@ -7,22 +7,9 @@
     <nav>
         <h6 class="footer-title">Catégorie</h6>
         <div style="column-count: 2;">
-
-            @php
-                $categories = \App\Models\Category::pluck('name');
-            $totalCategories = $categories->count();
-            $half = ceil($totalCategories / 2);
-            @endphp
-
             <div>
-                @foreach($categories->take($half) as $id => $name)
-                    <div><a class="link link-hover" href="?sort=name {{ isset($sort) && $sort === 'name' }}">{{ $name }}</a></div>
-                @endforeach
-            </div>
-
-            <div>
-                @foreach($categories->slice($half) as $id => $name)
-                    <div><a class="link link-hover" href="?sort=name {{ isset($sort) && $sort === 'name' }}">{{ $name }}</a></div>
+                @foreach($categoriesNames as $category => $name)
+                    <div><a class="link link-hover" href="{{route('categories.sort', ['name'=>$name])}}">{{ $name }}</a></div>
                 @endforeach
             </div>
         </div>
