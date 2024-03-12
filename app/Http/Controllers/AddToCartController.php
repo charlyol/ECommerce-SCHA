@@ -30,11 +30,12 @@ class AddToCartController extends Controller
     public function addToCartLong(Request $request)
     {
         $bookId=request()->input('book_id');
-        $book=Book::where('id', $bookId)->get();
+        $book=Book::where('id', $bookId)->first();
         $quantity = request()->input('quantity');
         $actualCart = $request->session()->get('cart');
         if (isset($actualCart) && array_key_exists($bookId, $actualCart)) {
             $actualCart[$bookId] += $quantity;
+            $actualCart[$bookId] = ($actualCart[$bookId] > $book->stock) ? $book->stock : $actualCart[$bookId];
             $request->session()->put('cart', $actualCart);
         } else {
             $actualCart[$bookId] = $quantity;

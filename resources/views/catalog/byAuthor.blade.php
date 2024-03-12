@@ -9,7 +9,7 @@
     <title>Document</title>
 </head>
 <body>
-    <p>{{$user->first_name}} - {{$user->last_name}} - {{$user->nickname}}</p>
+    <h1 class="text-3xl font-bold underline">{{$user->first_name}} - {{$user->last_name}} - {{$user->nickname}}</h1>
     <p>{{$user->bio}} </p>
     <h2>Les ouvrages de {{$user->first_name}} - {{$user->last_name}}</h2>
     <div class="flex flex-row justify-around flex-wrap">

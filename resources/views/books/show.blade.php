@@ -16,7 +16,9 @@
                             alt="Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug."
                             class="h-full w-full object-cover object-center">
             <h1 class="text-3xl font-bold underline">{{ $book->title }}</h1>
-            <h2 class=" text-xl text-italic font-bold text-gray-900">Votre future BD</h2>
+            <a href="{{route('authorCatalog', ['firstName'=> $book->user()->first()->first_name, 'lastName'=> $book->user()->first()->last_name])}}"><h2  class="text-xl text-italic font-bold text-gray-900">
+                {{$book->user()->first()->first_name}}-{{$book->user()->first()->last_name}}
+            </h2></a>
 
             <div class="flex flex-row mt-6 gap-10">
                 <div class="">
@@ -26,7 +28,6 @@
                 </div>
                 <div class="flex flex-col justify-between items-stretch">
                         <div>
-                            
                             <div>{{ $book->summary }}</div>
                         </div>
 
