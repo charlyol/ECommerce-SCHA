@@ -11,6 +11,15 @@ class OrderItem extends Model
 {
     use HasFactory;
     use HasUuids;
+
+    protected $fillable = [
+        'quantity',
+        'price_wt',
+        'title',
+        'created_at',
+        'updated_at',
+        'order_id',
+    ];
     public function order(): BelongsTo
     {
         return $this->belongsTo(Order::class);

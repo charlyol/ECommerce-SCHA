@@ -26,9 +26,7 @@
         <form class="mt-12">
             <div>
                 <h2 class="sr-only">Vous avez sélectionné :</h2>
-@foreach($orderItems as $command)
-
-
+{{-- @foreach($orderItems as $command)
                 <ul role="list" class="divide-y divide-gray-200 border-b border-t border-gray-200">
                     <li class="flex py-6 sm:py-10">
                         <div class="flex-shrink-0">
@@ -74,7 +72,7 @@
                             </p>
                         </div>
                     </li>
-                    @endforeach
+@endforeach --}}
                     <!-- More products... -->
                 </ul>
             </div>
@@ -91,20 +89,20 @@
                             <div class="flex items-center justify-between py-4">
                                 <dt class="text-gray-600">Sous-total</dt>
 
-                                <dd class="font-medium text-gray-900">{{$subtotal}}€</dd>
+                                <dd class="font-medium text-gray-900">€</dd>
 
                             </div>
                             <div class="flex items-center justify-between py-4">
                                 <dt class="text-gray-600">Frais de port</dt>
-                                <dd class="font-medium text-gray-900">{{$portShip}}€</dd>
+                                <dd class="font-medium text-gray-900">€</dd>
                             </div>
                             <div class="flex items-center justify-between py-4">
                                 <dt class="text-gray-600">Taxe</dt>
-                                <dd class="font-medium text-gray-900">{{$tax}}€</dd>
+                                <dd class="font-medium text-gray-900">€</dd>
                             </div>
                             <div class="flex items-center justify-between py-4">
                                 <dt class="text-base font-medium text-gray-900">Total</dt>
-                                <dd class="text-base font-medium text-gray-900">{{$total}}€</dd>
+                                <dd class="text-base font-medium text-gray-900">€</dd>
                             </div>
                         </dl>
                     </div>
@@ -117,7 +115,7 @@
                 <div class="mt-6 text-center text-sm text-gray-500">
                     <p>
                         or
-                        <a href="{{route('Home')}}" class="font-medium text-indigo-600 hover:text-sky">
+                        <a href="{{route('home')}}" class="font-medium text-indigo-600 hover:text-sky">
                             Tu n'as pas fini ?
                             <span aria-hidden="true"> &rarr;</span>
                         </a>
