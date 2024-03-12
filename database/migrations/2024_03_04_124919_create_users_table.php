@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('pic_path', 255)->nullable();
             $table->foreignUuid('roles_id') ->default('admin');
             $table->timestamps();
-            $table->longText('bio') ->nullable();
+            $table->longText('bio')->nullable();
         });
     }
 

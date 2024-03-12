@@ -24,7 +24,7 @@ class ImageFactory extends Factory
             return [
                 'type' => $type,
                 'path' => function () use($type) {
-                    if ($type == "banner") {return 'https://placehold.co/1440x630';}
+                    if ($type == "banner") {return 'https://placehold.co/1440x500';}
                     else                   {return 'https://placehold.co/250x250';}},
                 'alt_text' => $this->faker->text(100),
             ];

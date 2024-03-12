@@ -28,6 +28,7 @@ class BookFactory extends Factory
             'page_quantity'=>$this->faker->numberBetween(20,350),
             'price_wt'=>$this->faker->numberBetween(10, 50),
             'weight'=>$this->faker->numberBetween(1, 5),
+            'stock'=>$this->faker->numberBetween(0, 500),
         ];
     }
 }
