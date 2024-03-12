@@ -1,10 +1,11 @@
+@extends('layouts.app')
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 @vite('resources/css/app.css')
-{{--    @extends('layouts.app')--}}
+
     <title>Votre Panier</title>
 
     <!-- Fonts -->
@@ -17,6 +18,7 @@
     </style>
 </head>
 <body>
+@section('Content')
 <div class="bg-white">
     <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
         <h1 class="text-3xl font-bold tracking-tight text-gray-900">Ton incroyable panier</h1>
@@ -24,9 +26,7 @@
         <form class="mt-12">
             <div>
                 <h2 class="sr-only">Vous avez sélectionné :</h2>
-@foreach($orderItems as $command)
-
-
+{{-- @foreach($orderItems as $command)
                 <ul role="list" class="divide-y divide-gray-200 border-b border-t border-gray-200">
                     <li class="flex py-6 sm:py-10">
                         <div class="flex-shrink-0">
@@ -72,7 +72,7 @@
                             </p>
                         </div>
                     </li>
-                    @endforeach
+@endforeach --}}
                     <!-- More products... -->
                 </ul>
             </div>
@@ -89,34 +89,34 @@
                             <div class="flex items-center justify-between py-4">
                                 <dt class="text-gray-600">Sous-total</dt>
 
-                                <dd class="font-medium text-gray-900">{{$subtotal}}€</dd>
+                                <dd class="font-medium text-gray-900">€</dd>
 
                             </div>
                             <div class="flex items-center justify-between py-4">
                                 <dt class="text-gray-600">Frais de port</dt>
-                                <dd class="font-medium text-gray-900">{{$portShip}}€</dd>
+                                <dd class="font-medium text-gray-900">€</dd>
                             </div>
                             <div class="flex items-center justify-between py-4">
                                 <dt class="text-gray-600">Taxe</dt>
-                                <dd class="font-medium text-gray-900">{{$tax}}€</dd>
+                                <dd class="font-medium text-gray-900">€</dd>
                             </div>
                             <div class="flex items-center justify-between py-4">
                                 <dt class="text-base font-medium text-gray-900">Total</dt>
-                                <dd class="text-base font-medium text-gray-900">{{$total}}€</dd>
+                                <dd class="text-base font-medium text-gray-900">€</dd>
                             </div>
                         </dl>
                     </div>
 
                 </div>
                 <div class="mt-10">
-                    <button type="submit" class="w-full rounded-md border bg-grey px-4 py-3 text-base font-medium text-red shadow-sm hover:bg-indigo focus:outline-none focus:ring-2 focus:ring-indigo focus:ring-offset-2 focus:ring-offset-gray-50">Paiement</button>
+                    <button type="submit" class="w-full rounded-md border bg-gray-300 px-4 py-3 text-base font-medium text-red shadow-sm hover:bg-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo focus:ring-offset-2 focus:ring-offset-gray-50">Paiement</button>
                 </div>
 
                 <div class="mt-6 text-center text-sm text-gray-500">
                     <p>
                         or
-                        <a href="#" class="font-medium text-indigo-600 hover:text-sky">
-                            Continue Shopping
+                        <a href="{{route('home')}}" class="font-medium text-indigo-600 hover:text-sky">
+                            Tu n'as pas fini ?
                             <span aria-hidden="true"> &rarr;</span>
                         </a>
                     </p>
@@ -125,5 +125,5 @@
         </form>
     </div>
 </div>
-@include('layouts.footer')
+@endsection
 </body>

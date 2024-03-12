@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('description', 1000);
             $table->string('summary', 200);
             $table->string('size', 50);
+            $table->unsignedInteger('stock');
             $table->unsignedInteger('page_quantity');
             $table->unsignedFloat('price_wt');
             $table->unsignedFloat('weight');
