@@ -1,6 +1,8 @@
 <footer class="footer p-10 bg-red-600 text-base-content">
     <aside>
+        <a href="{{ route('Home') }}">
         <x-application-logo class="block h-9 w-auto fill-current text-gray-800"/>
+        </a>
     </aside>
     <nav>
         <h6 class="footer-title">Catégorie</h6>
