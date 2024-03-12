@@ -28,6 +28,7 @@ Route::get('/books/{id}',[BookController::class, 'show'])->name('books.show');
 Route::get('/sagas/{id}',[SagaController::class, 'index']);
 Route::get('/cart', [CartController::class, 'view'])->name('cart');
 Route::get('/addToCart/{book}', [AddToCartController::class, 'addToCart'])->name('addToCart');
+Route::post('/addToCartLong', [AddToCartController::class, 'addToCartLong'])->name('addToCartLong');
 Route::get('/{firstName}-{lastName}', [AuthorController::class, 'dataByAuthor']);
 
 require __DIR__.'/auth.php';
