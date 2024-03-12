@@ -20,5 +20,4 @@
 {{ $catalog->links() }}
     @endsection
 </body>
-@endsection
 </html>

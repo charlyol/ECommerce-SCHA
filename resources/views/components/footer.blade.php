@@ -1,6 +1,6 @@
 <footer class="footer p-10 bg-red-600 text-base-content">
     <aside>
-        <a href="{{ route('Home') }}">
+        <a href="{{ route('home') }}">
         <x-application-logo class="block h-9 w-auto fill-current text-gray-800"/>
         </a>
     </aside>
