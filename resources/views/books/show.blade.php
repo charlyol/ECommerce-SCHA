@@ -72,12 +72,16 @@
             </div>
             <div class="my-20">{{ $book->description }}</div>
     </div>
+    @if ($comments != null)
     <div class="flex flex-row justify-around flex-wrap" style="background-color: rgb(221, 221, 221)">
+        
         @foreach ($comments as $comment)
             @include('comments.commentsBox')
         @endforeach
+        
     </div>
     {{$comments->links()}}
+    @endif
 </body>
 @endsection
 </html>

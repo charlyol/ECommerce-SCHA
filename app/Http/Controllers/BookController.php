@@ -11,7 +11,8 @@ class BookController extends Controller
     public function show(string $uuid)
     {
         $book = Book::where('id', $uuid)->firstOrFail();
-        $comments = $book->comment()->first()->commentByBook($book);
+        $comment = $book->comment()->first();
+        $comments = $comment ? $comment->commentByBook($book) : null;
         return view('books.show', compact('book', 'comments'));
     }
     public function create()
