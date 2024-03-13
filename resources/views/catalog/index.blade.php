@@ -1,8 +1,9 @@
-@if (Auth::check())
-    @extends('layouts.app')
+@if (auth()->check())
+    @php $layout= 'layouts.app' @endphp
 @else
-    @extends('layouts.guest')
+    @php $layout= 'layouts.guest' @endphp
 @endif
+@extends($layout)
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>

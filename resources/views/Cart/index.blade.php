@@ -1,9 +1,9 @@
-@auth
-    @extends('layouts.app')
+@if (auth()->check())
+    @php $layout= 'layouts.app' @endphp
 @else
-    @extends('layouts.guest')
-@endauth
-
+    @php $layout= 'layouts.guest' @endphp
+@endif
+@extends($layout)
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -26,14 +26,14 @@
 @section('Content')
 
 <div class="bg-white">
-    <div class="flex flex-col items-center justify-stretch mx-1 py-16  sm:py-24 ">
-        <h1 class="text-3xl font-bold tracking-tight text-gray-900">
+    <div class="flex flex-col items-stretch justify-stretch mx-10 py-16  sm:py-24 ">
+        <h1 class="text-3xl text-center font-bold tracking-tight text-gray-900">
             Panier
         </h1>
         @php
             $totalPriceWT=0;
         @endphp
-        <div class="flex flex-col md:flex-row divide-x gap-12 mt-12">
+        <div class="flex flex-col md:flex-row  md:justify-around divide-x  mt-12">
             <div>
                 <h2 class="sr-only">Vous avez sélectionné :</h2>
                 @foreach($orderItems as $command)
