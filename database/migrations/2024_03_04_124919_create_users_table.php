@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('pic_path', 255)->nullable();
             $table->timestamps();
             $table->longText('bio')->nullable();
+            $table->string('role')->default('user');
         });
     }
 
@@ -31,5 +32,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('users');
+        Schema::table('users', function (Blueprint $table){
+           $table->dropColumn('role');
+        });
     }
 };

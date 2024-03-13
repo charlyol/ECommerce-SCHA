@@ -10,7 +10,7 @@ class CategoryController extends Controller
 {
     public function sort(Request $request,$name)
     {
-        $catalog = Category::where('name',$name)->first()->book()->paginate(9);
+        $catalog = Category::where('name','=',$name)->first()->book()->paginate(9);
 
         return view('catalog.index', compact('catalog'));
     }
