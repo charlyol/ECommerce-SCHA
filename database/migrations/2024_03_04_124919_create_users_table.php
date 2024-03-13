@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('nickname', 50)->nullable();
             $table->unsignedInteger('age')->nullable();
             $table->string('pic_path', 255)->nullable();
+            $table->foreignUuid('roles_id') ->default('admin');
             $table->timestamps();
             $table->longText('bio')->nullable();
             $table->string('role')->default('user');

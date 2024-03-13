@@ -29,13 +29,19 @@ Route::get('/books/{id}',[BookController::class, 'show'])->name('books.show');
 Route::get('/sagas/{id}',[SagaController::class, 'index']);
 Route::get('/cart', [CartController::class, 'view'])->name('cart');
 Route::get('/addToCart/{book}', [AddToCartController::class, 'addToCart'])->name('addToCart');
-Route::get('/{firstName}-{lastName}', [AuthorController::class, 'dataByAuthor']);
 Route::get('/auth/list',[ListController::class,'edit'])->name('list.edit');
 Route::delete('/books/{id}', [BookController::class,'destroy'])->name('books.destroy');
 Route::get('/books/{uuid}/edit', [BookController::class,'edit'])->name('books.edit');
 /*Route::get('/books', [BookController::class,'index'])->name('books.index');*/
+Route::post('/addToCartLong', [AddToCartController::class, 'addToCartLong'])->name('addToCartLong');
+Route::get('/{firstName}-{lastName}', [AuthorController::class, 'dataByAuthor'])->name('authorCatalog');
+Route::delete('/cart/{bookId}', [CartController::class, 'delete'])->name('deleteCartItem');
 
 require __DIR__.'/auth.php';
+Route::get('/cart/{id}', [CartController::class, 'view']);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
 
@@ -50,5 +56,5 @@ Route::middleware('auth')->group(function () {
 // section du controller de test d'Augustin
 Route::get('/AugustinBricole', [AugustinController::class,'dataByAuthor']);
 Route::get('/hello', function () { return view('hello');});
-Route::get('/footer',[\App\Http\Controllers\CategoryController::class,'index'])->name('components.footer');
+
 

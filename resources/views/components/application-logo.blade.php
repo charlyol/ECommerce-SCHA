@@ -1,1 +1,1 @@
-<img src ="{{asset('img/SCHA-logo.svg')}}" alt="a"/>
+<img style= "max-height: 100%" src ="{{asset('img/SCHA-logo.png')}}" alt="a"/>

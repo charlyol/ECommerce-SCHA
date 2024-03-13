@@ -23,7 +23,6 @@ class Comment extends Model
 
     }
     public function commentByBook (Book $book) {
-        $book=Comment::all()->random()->book;
         $comments=Comment::where('book_id', $book->id)->paginate(3);
         return $comments;
     }
