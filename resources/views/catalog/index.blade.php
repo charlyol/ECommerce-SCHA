@@ -23,8 +23,8 @@
 @section('Content')
     <div class="relative flex lg:inline-flex items-center px-3 py-2">
         <form method="GET" action="{{route('categories.find')}}">
-            <input type="text" name="search" placeholder="Rechercher une BD" class="bg-trasparent placeholder-black font-semibold text-sm">
-            <button type="submit" class="btn btn-primary">Rechercher</button>
+            <input type="text" name="search" placeholder="Rechercher une BD ..." class="bg-trasparent  font-semibold text-sm text-gray-900 px-2 py-1 rounded-lg ">
+            <button type="submit" class="px-2 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600">Rechercher</button>
         </form>
     </div>
 <div class="text-center">
