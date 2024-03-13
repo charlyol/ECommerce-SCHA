@@ -49,7 +49,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
     public function addresses(): HasMany
     {
         return $this->hasMany(Address::class);

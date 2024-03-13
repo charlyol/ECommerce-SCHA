@@ -18,11 +18,7 @@ class CategoryController extends Controller
 
     public function search(Request $request)
     {
-        $booksByCategory = Category::where('name', 'like', '%' . $request->input('search') . '%')->with('book')->first();
-
-        if (!$booksByCategory) {
-            return redirect()->route('categories.find');
-        }
+        $booksByCategory = Category::where('name', 'like', '%' . $request->input('search') . '%')->first();
 
         $booksByCategory = $booksByCategory->book;
 

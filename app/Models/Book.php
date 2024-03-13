@@ -15,7 +15,7 @@ class Book extends Model
     use HasUuids;
     use HasFactory;
 
-    protected $fillable = ['title', 'summary', 'price_wt','stock', 'description'];
+    protected $fillable = ['title', 'summary', 'price_wt'];
     public function category(): BelongsToMany
     {
         return $this->belongsToMany(Category::class,'books_has_categories');
@@ -54,4 +54,17 @@ class Book extends Model
         $images=$this->image()->where('type', 'banner')->get()->pluck('path');
         return $images;
     }
+    protected $fillable = [
+        '_token',
+        'title',
+        'description',
+        'summary',
+        'size',
+        'stock',
+        'page_quantity',
+        'price_wt',
+        'weight',
+        'age_class_id',
+        'saga_id',
+    ];
 }

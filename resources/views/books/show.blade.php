@@ -21,6 +21,7 @@
                             alt="Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug."
                             class="h-full w-full object-cover object-center">
             <h1 class="text-3xl font-bold underline">{{ $book->title }}</h1>
+
             <a href="{{route('authorCatalog', ['firstName'=> $book->user()->first()->first_name, 'lastName'=> $book->user()->first()->last_name])}}"><h2  class="text-xl text-italic font-bold text-gray-900">
                 {{$book->user()->first()->first_name}}-{{$book->user()->first()->last_name}}
             </h2></a>
@@ -66,12 +67,13 @@
                             @csrf
                             <input type="hidden" name="book_id" value="{{ $book->id }}">
                         </form>
-                        
+
 
                 </div>
             </div>
             <div class="my-20">{{ $book->description }}</div>
     </div>
+
     @if ($comments != null)
     <div class="flex flex-row justify-around flex-wrap" style="background-color: rgb(221, 221, 221)">
         
@@ -82,6 +84,7 @@
     </div>
     {{$comments->links()}}
     @endif
+
 </body>
 @endsection
 </html>
