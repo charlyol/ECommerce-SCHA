@@ -62,7 +62,7 @@
                                                             <option value="{{$i}}"> {{$i}} </option>
                                                         @endfor
                                                     </select>
-                                                    </form class="mt-4 flex items-center sm:absolute sm:left-1/2 sm:top-0 sm:mt-0 sm:block">
+                                                    </form>
                                                     <form action="{{route('deleteCartItem',[ 'bookId'=> $command['book']->id ])}}" method="post">
                                                         @csrf
                                                         @method('DELETE')

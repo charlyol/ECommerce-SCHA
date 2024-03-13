@@ -28,8 +28,9 @@ class AddToCartController extends Controller
         }
         return redirect()->route('cart');
     }
-    public function addToCartLong(Request $request)
+    public function addToCartLong(UseCartRequest $request)
     {
+        $validated=$request->validated();
         $bookId=request()->input('book_id');
         $book=Book::where('id', $bookId)->first();
         $quantity = request()->input('quantity');
@@ -42,45 +43,44 @@ class AddToCartController extends Controller
             $actualCart[$bookId] = $quantity;
             $request->session()->put('cart', $actualCart);
         }
-
         return redirect()->route('cart');
     }
-    public function aToCart(string $id, $quantity)
-    {
-        $user = Auth::user();
+    // public function aToCart(string $id, $quantity)
+    // {
+    //     $user = Auth::user();
 
-        $order = new Order();
-        $order->user_id = $user->id;
-        $order->order_ref = date('d-m-Y');
-        $order->status = 'waiting for confirmation';
-        $order->created_at = now();
-        $order->updated_at = now();
-        $existingOrdersIds = Order::all()->pluck('id')->toArray();
-        $order->id = (function () use ($existingOrdersIds) {
-            $uuid = Uuid::uuid4()->toString();
-            while (in_array($uuid, $existingOrdersIds)) {
-                $uuid = Uuid::uuid4()->toString();
-            }
-            return $uuid;
-        })();
-        $order->save();
+    //     $order = new Order();
+    //     $order->user_id = $user->id;
+    //     $order->order_ref = date('d-m-Y');
+    //     $order->status = 'waiting for confirmation';
+    //     $order->created_at = now();
+    //     $order->updated_at = now();
+    //     $existingOrdersIds = Order::all()->pluck('id')->toArray();
+    //     $order->id = (function () use ($existingOrdersIds) {
+    //         $uuid = Uuid::uuid4()->toString();
+    //         while (in_array($uuid, $existingOrdersIds)) {
+    //             $uuid = Uuid::uuid4()->toString();
+    //         }
+    //         return $uuid;
+    //     })();
+    //     $order->save();
 
-        $orderItem = new OrderItem();
-        $existingOrderItemsIds = OrderItem::all()->pluck('id')->toArray();
-        $orderItem->id = (function () use ($existingOrderItemsIds) {
-            $uuid = Uuid::uuid4()->toString();
-            while (in_array($uuid, $existingOrderItemsIds)) {
-                $uuid = Uuid::uuid4()->toString();
-            }
-            return $uuid;
-        })();;
-        $orderItem->quantity = $quantity;
-        $orderItem->price_wt = Book::where('id', $id)->first()->price_wt;
-        $orderItem->title = Book::where('id', $id)->first()->title;
-        $orderItem->created_at = now();
-        $orderItem->updated_at = now();
-        $orderItem->order_id = $order->id;
-        $orderItem->save();
-        return redirect()->route('cart', ['id' => $order->id]);
-    }
+    //     $orderItem = new OrderItem();
+    //     $existingOrderItemsIds = OrderItem::all()->pluck('id')->toArray();
+    //     $orderItem->id = (function () use ($existingOrderItemsIds) {
+    //         $uuid = Uuid::uuid4()->toString();
+    //         while (in_array($uuid, $existingOrderItemsIds)) {
+    //             $uuid = Uuid::uuid4()->toString();
+    //         }
+    //         return $uuid;
+    //     })();;
+    //     $orderItem->quantity = $quantity;
+    //     $orderItem->price_wt = Book::where('id', $id)->first()->price_wt;
+    //     $orderItem->title = Book::where('id', $id)->first()->title;
+    //     $orderItem->created_at = now();
+    //     $orderItem->updated_at = now();
+    //     $orderItem->order_id = $order->id;
+    //     $orderItem->save();
+    //     return redirect()->route('cart', ['id' => $order->id]);
+    // }
 }
