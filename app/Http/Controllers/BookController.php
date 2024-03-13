@@ -20,9 +20,22 @@ class BookController extends Controller
         return view('books.create');
     }
 
+    public function edit(string $uuid)
+    {
+        $book = Book::where('id', $uuid)->firstOrFail();
+        return view('books.edit', compact('book'));
+    }
 
     public function store()
     {
         return view('books.store');
     }
+
+    public function destroy($id)
+    {
+        $book = Book::findOrFail($id);
+        $book->delete();
+        return redirect()->route('list.edit')->with('success', 'Book deleted successfully');
+    }
+
 }

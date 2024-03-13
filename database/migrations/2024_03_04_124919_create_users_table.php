@@ -23,6 +23,7 @@ return new class extends Migration
             $table->foreignUuid('roles_id') ->default('admin');
             $table->timestamps();
             $table->longText('bio')->nullable();
+            $table->string('role')->default('user');
         });
     }
 
@@ -32,5 +33,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('users');
+        Schema::table('users', function (Blueprint $table){
+           $table->dropColumn('role');
+        });
     }
 };

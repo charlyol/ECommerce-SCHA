@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('order_items', function (Blueprint $table) {
-            $table->foreignUuid('order_id')->constrained();
+            $table->foreignUuid('order_id')->constrained()->onDelete('cascade');
         });
     }
 

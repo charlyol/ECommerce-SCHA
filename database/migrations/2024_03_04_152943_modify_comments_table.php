@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('comments', function (Blueprint $table) {
-            $table->foreignUuid('book_id')->constrained();
-            $table->foreignUuid('user_id')->constrained();
+            $table->foreignUuid('book_id')->constrained()->onDelete('cascade');
+            $table->foreignUuid('user_id')->constrained()->onDelete('cascade');
         });
     }
 

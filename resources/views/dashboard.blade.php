@@ -11,7 +11,12 @@
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
                 </div>
+                <a href="{{route('list.edit')}}" class="inline-block px-4 py-1 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600">
+                    Modifier le contenue du site
+                </a>
             </div>
         </div>
     </div>
+
 </x-guest-layout>
+
