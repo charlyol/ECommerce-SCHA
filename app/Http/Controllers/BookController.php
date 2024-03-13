@@ -28,11 +28,21 @@ class BookController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'title' => ['required','string', 'max:100'],
+            'summary' => ['required','string', 'max:200'],
+            'description' => ['required','string', 'max:1000'],
+            'price_wt' => ['required','numeric', 'max:9999,99'],
+            'stock' => ['required','integer', 'max:999999999']
+        ]);
+
         $book = Book::findOrFail($id);
         $book->update([
             'title' => $request->input('title'),
             'summary' => $request->input('summary'),
-            'price_wt' => $request->input('price_wt')
+            'description' => $request->input('description'),
+            'price_wt' => $request->input('price_wt'),
+        'stock' => $request->input('stock')
         ]);
         return redirect()->route('list.edit')->with('success', 'Book updated successfully');
     }

@@ -8,7 +8,13 @@
         {{$book->summary}}
     </td>
     <td>
-        {{$book->price_wt}}
+        {{$book->description}}
+    </td>
+    <td>
+        {{$book->price_wt}} €
+    </td>
+    <td>
+        {{$book->stock}} U
     </td>
     <td>
         <a href="{{ route('books.edit', $book->id) }}" type="button"

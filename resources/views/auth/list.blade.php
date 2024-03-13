@@ -19,7 +19,9 @@
             <tr>
                 <th scope="col">title</th>
                 <th scope="col">summary</th>
+                <th scope="col">description</th>
                 <th scope="col">price</th>
+                <th scope="col">stock</th>
                 <th scope="col">actions</th>
             </tr>
             </thead>
