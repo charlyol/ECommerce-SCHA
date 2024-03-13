@@ -21,9 +21,19 @@ class UseCartRequest extends FormRequest
      */
     public function rules(): array
     {
+
         return [
-            'quantity' => ['int' ,'required'],
-            'bookId' => ['string' ,'required'],
+            'quantity' => ['integer' ,'required'],
+            'book_id' => ['string' ,'required'],
         ];
     }
+    public function messages(): array
+{
+    return [
+        'quantity.int' => 'A quantity is int',
+        'bookId.string' => 'A bookId is string',
+        'quantity.required' => 'A quantity is required',
+        'bookId.required' => 'A bookId is required',
+    ];
+}
 }

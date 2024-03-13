@@ -37,7 +37,7 @@
                             <div>{{ $book->summary }}</div>
                         </div>
 
-                        <form method="POST" action="{{ route('addToCartLong') }}" class="flex flex-row justify-between mx-20 flex items-center justify-between bg-red-700">
+                        <form method="POST" action="{{ route('addToCartLong') }}" class="flex flex-col md:flex-row justify-between mx-20 flex items-center justify-between bg-red-700">
 
                             <div class="flex flex-row items-stretch border-solid border border-black bg-white">
                                 <button onclick="var qty = this.parentNode.querySelector('.qty'); qty.value = qty.value <= 1 ? 1 : qty.value - 1;"
