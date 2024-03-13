@@ -8,7 +8,7 @@ class CatalogController extends Controller
 {
     public function index()
     {
-        $catalog = Book::paginate(9);
+        $catalog = Book::inRandomOrder()->paginate(9);
         return view('catalog.index', ['catalog' => $catalog]);
     }
 }

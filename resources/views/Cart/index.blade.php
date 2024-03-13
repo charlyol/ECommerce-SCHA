@@ -1,4 +1,9 @@
-@extends('layouts.app')
+@if (auth()->check())
+    @php $layout= 'layouts.app' @endphp
+@else
+    @php $layout= 'layouts.guest' @endphp
+@endif
+@extends($layout)
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -19,81 +24,82 @@
 </head>
 <body>
 @section('Content')
+
 <div class="bg-white">
-    <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
-        <h1 class="text-3xl font-bold tracking-tight text-gray-900">Ton incroyable panier</h1>
+    <div class="flex flex-col items-stretch justify-stretch mx-10 py-16  sm:py-24 ">
+        <h1 class="text-3xl text-center font-bold tracking-tight text-gray-900">
+            Panier
+        </h1>
         @php
             $totalPriceWT=0;
         @endphp
-        <div class="mt-12">
+        <div class="flex flex-col md:flex-row  md:justify-around divide-x  mt-12">
             <div>
                 <h2 class="sr-only">Vous avez sélectionné :</h2>
-            @foreach($orderItems as $command)
-            @php $totalPriceWT += $command['quantity']*$command['book']->price_wt @endphp
-                            <ul role="list" class="divide-y divide-gray-200 border-b border-t border-gray-200">
-                                <li class="flex flex-row justity-between py-6 sm:py-10">
-                                    <div class="flex-shrink-0">
-                                        <img src="{{$command['book']->coverByBook()[0] ?? 'https://placehold.co/250x250?text=Not+Working'}}" alt="Insulated bottle with white base and black snap lid." class="h-24 w-24 rounded-lg object-cover object-center sm:h-32 sm:w-32">
-                                    </div>
+                @foreach($orderItems as $command)
+                    @php $totalPriceWT += $command['quantity']*$command['book']->price_wt @endphp
+                                <ul role="list" class="divide-y divide-gray-200 border-b border-t border-gray-200">
+                                    <li class="flex flex-row justity-between py-6 sm:py-10">
+                                        <div class="flex-shrink-0">
+                                            <img src="{{$command['book']->coverByBook()[0] ?? 'https://placehold.co/250x250?text=Not+Working'}}" alt="Insulated bottle with white base and black snap lid." class="h-24 w-24 rounded-lg object-cover object-center sm:h-32 sm:w-32">
+                                        </div>
 
-                                    <div class="relative ml-4 flex flex-1 flex-col justify-between sm:ml-6 items-stretch">
-                                        <div>
-                                            <div class="flex justify-between sm:grid sm:grid-cols-2">
-                                                    <h3 class="text-sm">
-                                                        <a href="{{route('books.show', ['id'=>$command['book']->id])}}" class="font-medium text-gray-700 hover:text-gray-800">{{$command['book']->title }}</a>
-                                                    </h3>
-                                                    
-                                                        <p class="text-right text-sm font-medium text-gray-900"> Prix unitaire (HT) : {{number_format($command['book']->price_wt, 2, ',', ' ')}} €</p>
+                                        <div class="relative ml-4 flex flex-1 flex-col justify-between sm:ml-6 items-stretch">
+                                            <div>
+                                                <div class="flex justify-between sm:grid sm:grid-cols-2">
+                                                        <h3 class="text-sm">
+                                                            <a href="{{route('books.show', ['id'=>$command['book']->id])}}" class="font-medium text-gray-700 hover:text-gray-800">{{$command['book']->title }}</a>
+                                                        </h3>
+                                                        
+                                                            <p class="text-right text-sm font-medium text-gray-900"> Prix unitaire (HT) : {{number_format($command['book']->price_wt, 2, ',', ' ')}} €</p>
+                                                </div>
+
+                                                <form class="mt-4 flex items-center sm:absolute sm:left-1/2 sm:top-0 sm:mt-0 sm:block">
+                                                    <label for="quantity-0" class="sr-only">Quantity, Nomad Tumbler</label>
+                                                    <select id="quantity-0" name="quantity-0" class="block max-w-full rounded-md border border-gray-300 py-1.5 text-left text-base font-medium leading-5 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm">
+                                                        <option value="{{$command['quantity']}}"> {{$command['quantity']}} </option>
+                                                        @for ($i=$command['book']->stock-1; $i>= 0; $i--)
+                                                            <option value="{{$i}}"> {{$i}} </option>
+                                                        @endfor
+                                                    </select>
+                                                    </form class="mt-4 flex items-center sm:absolute sm:left-1/2 sm:top-0 sm:mt-0 sm:block">
+                                                    <form action="{{route('deleteCartItem',[ 'bookId'=> $command['book']->id ])}}" method="post">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" type="button" class="ml-4 text-sm font-medium text-indigo-600 hover:text-indigo sm:ml-0 sm:mt-3">
+                                                            <span>Remove</span>
+                                                        </button>
+                                                    </form>
+                                                
                                             </div>
 
-                                            <form class="mt-4 flex items-center sm:absolute sm:left-1/2 sm:top-0 sm:mt-0 sm:block">
-                                                <label for="quantity-0" class="sr-only">Quantity, Nomad Tumbler</label>
-                                                <select id="quantity-0" name="quantity-0" class="block max-w-full rounded-md border border-gray-300 py-1.5 text-left text-base font-medium leading-5 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm">
-                                                    <option value="{{$command['quantity']}}"> {{$command['quantity']}} </option>
-                                                    @for ($i=$command['book']->stock-1; $i>= 0; $i--)
-                                                        <option value="{{$i}}"> {{$i}} </option>
-                                                    @endfor
-                                                </select>
-                                                </form class="mt-4 flex items-center sm:absolute sm:left-1/2 sm:top-0 sm:mt-0 sm:block">
-                                                <form action="{{route('deleteCartItem',[ 'bookId'=> $command['book']->id ])}}" method="post">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" type="button" class="ml-4 text-sm font-medium text-indigo-600 hover:text-indigo sm:ml-0 sm:mt-3">
-                                                        <span>Remove</span>
-                                                    </button>
-                                                </form>
-                                            
+                                            <div class="flex flex-row justify-between items-center">
+                                                <p class="mt-4 flex space-x-2 text-sm text-gray-700">
+                                                    @if ($command['book']->stock >= $command['quantity'])
+                                                    <svg class="h-5 w-5 flex-shrink-0 text-green-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                        <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                                                    </svg>
+                                                    <span>En stock</span>
+                                                    @else
+                                                    <svg class="h-5 w-5 flex-shrink-0 text-red-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                        <path fill-rule="evenodd" d="M3.293 3.293a1 1 0 011.414 0L10 8.586l5.293-5.293a1 1 0 111.414 1.414L11.414 10l5.293 5.293a1 1 0 01-1.414 1.414L10 11.414l-5.293 5.293a1 1 0 01-1.414-1.414L8.586 10 3.293 4.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                    </svg>                                              
+                                                    <span>Indisponible</span>
+                                                    @endif
+                                                </p>
+                                                <p class="text-right text-2xl font-medium text-gray-900 mr-3">
+                                                    {{number_format($command['quantity']*$command['book']->price_wt, 2, ',', ' ')}} €
+                                                </p>
+                                            </div>
                                         </div>
-
-                                        <div class="flex flex-row justify-between items-center">
-                                            <p class="mt-4 flex space-x-2 text-sm text-gray-700">
-                                                @if ($command['book']->stock >= $command['quantity'])
-                                                <svg class="h-5 w-5 flex-shrink-0 text-green-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                    <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
-                                                </svg>
-                                                <span>En stock</span>
-                                                @else
-                                                <svg class="h-5 w-5 flex-shrink-0 text-red-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                    <path fill-rule="evenodd" d="M3.293 3.293a1 1 0 011.414 0L10 8.586l5.293-5.293a1 1 0 111.414 1.414L11.414 10l5.293 5.293a1 1 0 01-1.414 1.414L10 11.414l-5.293 5.293a1 1 0 01-1.414-1.414L8.586 10 3.293 4.707a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                                </svg>                                              
-                                                <span>Indisponible</span>
-                                                @endif
-                                            </p>
-                                            <p class="text-right text-2xl font-medium text-gray-900 mr-3">
-                                                 {{number_format($command['quantity']*$command['book']->price_wt, 2, ',', ' ')}} €
-                                            </p>
-                                        </div>
-                                    </div>
-                                </li>
-            @endforeach
+                                    </li>
+                @endforeach
                 </ul>
             </div>
 
-            <!-- Order summary -->
+            <div class="flex flex-col items-stretch mt-10 pl-3">
 
-            <div class="mt-10 sm:ml-32 sm:pl-6">
-
-                <div class="rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:p-8">
+                <div class="rounded-lg  p-3 ">
                     <h2 class="sr-only">Order summary</h2>
 
                     <div class="flow-root">
@@ -127,7 +133,7 @@
                     <p>
                         or
                         <a href="{{route('home')}}" class="font-medium text-indigo-600 hover:text-sky">
-                            Tu n'as pas fini ?
+                            Continuer mes achats
                             <span aria-hidden="true"> &rarr;</span>
                         </a>
                     </p>

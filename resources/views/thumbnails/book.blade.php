@@ -1,9 +1,10 @@
-<div class="flex flex-col justify-between" style="background-color: white; box-shadow: 0 4px 8px rgb(184, 184, 184); padding: 20px; width: 300px; margin: 20px auto;">
-    <a href="{{route('books.show',['id'=> $book->id])}}" class="text-sm">
+<div class="indicator flex flex-col justify-between" style="background-color: white; box-shadow: 0 4px 8px rgb(184, 184, 184); padding: 20px; width: 300px; margin: 20px auto;">   
+    @if ($book->created_at->diff('now')->days <= 1)
+            <span class="indicator-item badge badge-primary">new</span><a href="{{route('books.show',['id'=> $book->id])}}" class="text-sm">
+        @endif
         <div class="">
             <img src="{{$book->coverByBook()[0]?? 'https://placehold.co/250x300'}}" alt="." class="h-full w-full object-cover object-center">
         </div>
-    </a>
     <a href="/books/{{$book->id}}" class="text-sm">
         <div>
             <h3 class="mt-4 font-medium text-gray-900">{{$book->title}}</h3>
