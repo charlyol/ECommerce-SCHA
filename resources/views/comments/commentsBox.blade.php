@@ -4,7 +4,7 @@
     padding: 20px; width: 300px; margin: 20px auto;">
         "{{$comment->body}}"
         <footer class="mt-1 italic text-gray-500">
-            @if( $comment->user->role->name =='author')
+            @if( $comment->user()->first()->role()->first()->name=='author')
             <a href="/{{$comment->user->first_name}}-{{$comment->user->last_name}}" >
                 - {{$comment->user->first_name}} {{$comment->user->last_name}}
             </a>

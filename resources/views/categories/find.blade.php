@@ -33,7 +33,9 @@
     <ul>
         @foreach($booksByCategory as $bookByCategory)
             <li>
+                <a href="{{route('books.show',['id'=>$bookByCategory->id])}}">
                 <strong>{{ $bookByCategory->title }}</strong>
+            </a>
             </li>
         @endforeach
     </ul>

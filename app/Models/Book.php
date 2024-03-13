@@ -14,6 +14,8 @@ class Book extends Model
 {
     use HasUuids;
     use HasFactory;
+
+    protected $fillable = ['title', 'summary', 'price_wt'];
     public function category(): BelongsToMany
     {
         return $this->belongsToMany(Category::class,'books_has_categories');

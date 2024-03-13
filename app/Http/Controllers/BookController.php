@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\AgeClass;
 use App\Models\Book;
+
 use App\Models\Saga;
 use App\Models\User;
 use Faker\Core\Uuid;
+
+use App\Models\Comment;
+
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Support\Str;
@@ -16,12 +20,33 @@ class BookController extends Controller
     public function show(string $uuid)
     {
         $book = Book::where('id', $uuid)->firstOrFail();
-        return view('books.show', compact('book'));
+        $comment = $book->comment()->first();
+        $comments = $comment ? $comment->commentByBook($book) : null;
+        return view('books.show', compact('book', 'comments'));
     }
 
+
     public function create(): View
+
     {
         return view('books.create');
+    }
+
+    public function edit($id)
+    {
+        $book = Book::findOrFail($id);
+        return view('books.edit', compact('book'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $book = Book::findOrFail($id);
+        $book->update([
+            'title' => $request->input('title'),
+            'summary' => $request->input('summary'),
+            'price_wt' => $request->input('price_wt')
+        ]);
+        return redirect()->route('list.edit')->with('success', 'Book updated successfully');
     }
 
 
@@ -43,22 +68,18 @@ class BookController extends Controller
         $book->saga_id = $saga;
         $book->save();
         $book->user()->attach($user);
-//        Book::create($request->only([
-//            'title' => 'required',
-//            'author' => 'nullable',
-//            'summary' => 'required',
-//            'description' => 'required',
-//            'size' => 'required',
-//            'stock' => 'required',
-//            'page_quantity' => 'required',
-//            'price_wt' => 'required',
-//            'weight' => 'required',
-//            'age_class_id' => 'required',
-//            'saga_id' => 'required',
-//        ]));
+
         return redirect(route('books.show',
             ['id'=>$book->id ,
             'book'=> $book]));
 
     }
+
+    public function destroy($id)
+    {
+        $book = Book::findOrFail($id);
+        $book->delete();
+        return redirect()->route('list.edit')->with('success', 'Book deleted successfully');
+    }
+
 }

@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('books_has_images', function (Blueprint $table) {
-            $table->foreignUuid('book_id')->constrained();
-            $table->foreignUuid('image_id')->constrained();
+            $table->foreignUuid('book_id')->constrained()->onDelete('cascade');
+            $table->foreignUuid('image_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
