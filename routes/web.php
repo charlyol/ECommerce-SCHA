@@ -32,10 +32,12 @@ Route::get('/addToCart/{book}', [AddToCartController::class, 'addToCart'])->name
 Route::get('/auth/list',[ListController::class,'edit'])->name('list.edit');
 Route::delete('/books/{id}', [BookController::class,'destroy'])->name('books.destroy');
 Route::get('/books/{uuid}/edit', [BookController::class,'edit'])->name('books.edit');
-/*Route::get('/books', [BookController::class,'index'])->name('books.index');*/
+Route::get('/find', [CategoryController::class, 'search'])->name('categories.find');
 Route::post('/addToCartLong', [AddToCartController::class, 'addToCartLong'])->name('addToCartLong');
 Route::get('/{firstName}-{lastName}', [AuthorController::class, 'dataByAuthor'])->name('authorCatalog');
 Route::delete('/cart/{bookId}', [CartController::class, 'delete'])->name('deleteCartItem');
+Route::put('/books/{id}', [BookController::class,'update'])->name('books.update');
+
 
 require __DIR__.'/auth.php';
 Route::get('/cart/{id}', [CartController::class, 'view']);

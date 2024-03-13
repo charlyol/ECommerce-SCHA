@@ -1,25 +1,14 @@
 
-<!-- resources/views/books/edit.blade.php -->
 
-@extends('layouts.app')
+<form action="{{ route('books.update', $book->id) }}" method="POST">
+    @csrf
+    @method('PUT')
 
-@section('content')
-    <h1>Edit Book</h1>
-    <form action="{{ route('books.update', $book->id) }}" method="POST">
-        @csrf
-        @method('PUT')
-        <div>
-            <label for="title">Title:</label>
-            <input type="text" id="title" name="title" value="{{ $book->title }}">
-        </div>
-        <div>
-            <label for="summary">Summary:</label>
-            <textarea id="summary" name="summary">{{ $book->summary }}</textarea>
-        </div>
-        <div>
-            <label for="price">Price:</label>
-            <input type="text" id="price" name="price" value="{{ $book->price_wt }}">
-        </div>
-        <button type="submit">Update Book</button>
-    </form>
-@endsection
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" value="{{ $book->title }}">
+    <label for="title">Summary:</label>
+    <input type="text" id="Summary" name="Summary" value="{{ $book->Summary }}">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" value="{{ $book->title }}">
+    <button type="submit">Sauvegarder</button>
+</form>
