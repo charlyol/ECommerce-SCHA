@@ -1,4 +1,9 @@
-@extends('layouts.guest')
+@if (auth()->check())
+    @php $layout= 'layouts.app' @endphp
+@else
+    @php $layout= 'layouts.guest' @endphp
+@endif
+@extends($layout)
 <!DOCTYPE html>
 <html lang="en">
 <head>
