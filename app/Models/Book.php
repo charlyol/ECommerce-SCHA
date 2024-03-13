@@ -54,4 +54,17 @@ class Book extends Model
         $images=$this->image()->where('type', 'banner')->get()->pluck('path');
         return $images;
     }
+    protected $fillable = [
+        '_token',
+        'title',
+        'description',
+        'summary',
+        'size',
+        'stock',
+        'page_quantity',
+        'price_wt',
+        'weight',
+        'age_class_id',
+        'saga_id',
+    ];
 }
