@@ -31,6 +31,6 @@
                     Ajouter au panier
                 </a>
             @endif
-        
+
         </div>
 </div>
