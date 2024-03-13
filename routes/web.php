@@ -28,7 +28,6 @@ Route::get('/categories/{name}', [CategoryController::class, 'sort'])->name('cat
 Route::get('/find', [CategoryController::class, 'search'])->name('categories.find');
 Route::get('/books/{id}',[BookController::class, 'show'])->name('books.show');
 Route::get('/book/add',[BookController::class, 'create'])->name('book.add');
-Route::post('/book/store',[BookController::class, 'store'])->name('book.store');
 Route::get('/sagas/{id}',[SagaController::class, 'index']);
 Route::get('/cart', [CartController::class, 'view'])->name('cart');
 Route::get('/addToCart/{book}', [AddToCartController::class, 'addToCart'])->name('addToCart');
