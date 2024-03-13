@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.guest')
 <!doctype html>
 <html lang="en">
 <head>

@@ -1,4 +1,8 @@
-@extends('layouts.guest')
+@if (Auth::check())
+    @extends('layouts.app')
+@else
+    @extends('layouts.guest')
+@endif
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -11,7 +15,6 @@
 </head>
 @section('Content')
 <body>
-<div>Catalog</div>
 <div class="grid grid-cols-3 gap-4">
     @foreach($catalog as $book)
         @include('thumbnails.book')
