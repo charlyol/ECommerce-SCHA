@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AgeClass;
 use App\Models\Book;
+use App\Models\Saga;
+use App\Models\User;
+use Faker\Core\Uuid;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Support\Str;
 
 class BookController extends Controller
 {
@@ -22,7 +27,10 @@ class BookController extends Controller
 
     public function store(Request $request)
     {
-$book = new Book();
+        $book = new Book();
+        $user= $request->user();
+        $saga= $request->sagaId;
+        $ageClass= $request->age_class_id;
         $book->title = $request->title;
         $book->description = $request->description;
         $book->summary = $request->summary;
@@ -31,10 +39,10 @@ $book = new Book();
         $book->page_quantity = $request->page_quantity;
         $book->price_wt = $request->price_wt;
         $book->weight = $request->weight;
-        $book->age_class_id = $request->age_class_id;
-        $book->saga_id = $request->saga_id;
+        $book->age_class_id =$ageClass;
+        $book->saga_id = $saga;
         $book->save();
-
+        $book->user()->attach($user);
 //        Book::create($request->only([
 //            'title' => 'required',
 //            'author' => 'nullable',
@@ -48,7 +56,9 @@ $book = new Book();
 //            'age_class_id' => 'required',
 //            'saga_id' => 'required',
 //        ]));
-        return $book;
+        return redirect(route('books.show',
+            ['id'=>$book->id ,
+            'book'=> $book]));
 
     }
 }

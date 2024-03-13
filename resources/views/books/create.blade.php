@@ -18,7 +18,17 @@
         <input type="text" name="title" placeholder="Titre">
     </label>
     <label>
-        <input type="text" name="author" placeholder="Auteur">
+        <select class="form-control" id="user" name="user">
+
+            <option value="" selected>Veuillez choisir le nom de l'auteur...</option>
+
+            @foreach($authorsNames as $name)
+
+                <option value="{{ $name }}">{{ $name }}</option>
+
+            @endforeach
+
+        </select>
         </label>
     <br>
     <label>
@@ -43,10 +53,30 @@
         <input type="number" name="stock" placeholder="Inventaire du livre">
     </label>
     <label>
-        <textarea name="saga_id" placeholder="Id de la saga"></textarea>
+        <select class="form-control" id="sagaId" name="sagaId" placeholder="Nom de la saga">
+
+            <option value="" selected>Veuillez choisir la saga...</option>
+
+            @foreach($allSagas as $saga)
+
+                <option value="{{ $saga->id }}">{{ $saga->title }}</option>
+
+            @endforeach
+
+        </select>
     </label>
     <label>
-        <textarea name="age_class_id" placeholder="tranche d'âge"></textarea>
+        <select class="form-control" id="age_class_id" name="age_class_id" placeholder="Tranche d'age">
+
+            <option value="" selected>Veuillez choisir la tranche d'âge...</option>
+
+            @foreach($agesClasses as $ageClass)
+
+                <option value="{{ $ageClass->id }}">{{ $ageClass->name }}</option>
+
+            @endforeach
+
+        </select>
     </label>
 <br>
     <button type="submit">Ajouter la BD</button>
