@@ -7,11 +7,23 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/css/app.css')
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Catalogue</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet"/>
+
 </head>
-@section('Content')
 <body>
-<div>Catalog</div>
+@section('Content')
+    <div class="relative flex lg:inline-flex items-center px-3 py-2">
+        <form method="GET" action="{{route('categories.find')}}">
+            <input type="text" name="search" placeholder="Rechercher une BD" class="bg-trasparent placeholder-black font-semibold text-sm">
+            <button type="submit" class="btn btn-primary">Rechercher</button>
+        </form>
+    </div>
+<div class="text-center">
+    <h1> Catalogue </h1></div>
 <div class="grid grid-cols-3 gap-4">
     @foreach($catalog as $book)
         @include('thumbnails.book')

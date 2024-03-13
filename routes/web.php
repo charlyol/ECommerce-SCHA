@@ -21,10 +21,14 @@ use App\Http\Controllers\CategoryController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/categories/{name}', [CategoryController::class, 'sort'])->name('categories.sort');
 Route::get('/', [CatalogController::class,'index'])->name('home');
 Route::get('/welcome', function () {return view('welcome');});
+Route::get('/categories/{name}', [CategoryController::class, 'sort'])->name('categories.sort');
+//Route::get('/categories', [CategoryController::class, 'sort'])->name('categories.sort');
+Route::get('/find', [CategoryController::class, 'search'])->name('categories.find');
 Route::get('/books/{id}',[BookController::class, 'show'])->name('books.show');
+Route::get('/book/add',[BookController::class, 'create'])->name('book.add');
+Route::post('/book/store',[BookController::class, 'store'])->name('book.store');
 Route::get('/sagas/{id}',[SagaController::class, 'index']);
 Route::get('/cart', [CartController::class, 'view'])->name('cart');
 Route::get('/addToCart/{book}', [AddToCartController::class, 'addToCart'])->name('addToCart');
@@ -32,6 +36,10 @@ Route::post('/addToCartLong', [AddToCartController::class, 'addToCartLong'])->na
 Route::get('/{firstName}-{lastName}', [AuthorController::class, 'dataByAuthor'])->name('authorCatalog');
 Route::delete('/cart/{bookId}', [CartController::class, 'delete'])->name('deleteCartItem');
 require __DIR__.'/auth.php';
+Route::get('/cart/{id}', [App\Http\Controllers\CartController::class, 'view']);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/book/add',[BookController::class, 'create'])->name('book.add');
@@ -42,6 +50,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {return view('dashboard');})->name('dashboard');
 });
 
+require __DIR__.'/auth.php';
+
+Route::get('/{firstName}-{lastName}', [AuthorController::class, 'dataByAuthor']);
 // section du controller de test d'Augustin
 Route::get('/AugustinBricole', [AugustinController::class,'dataByAuthor']);
 Route::get('/hello', function () { return view('hello');});
